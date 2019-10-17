@@ -1,0 +1,4 @@
+#Thu Oct 17 13:26:09 EDT 2019
+base.0=/Users/momo_willie/Documents/Hady El-Saleh/Lab2_Real/Real/seg2505-projet-equipe-a19-18/SEG_Projet\#3/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

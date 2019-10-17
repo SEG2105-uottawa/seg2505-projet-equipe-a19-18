@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">SEG_Projet#4</string>
+<string name="app_name">SEG_Projet#4</string>
+<string-array name="usertype">
+    <item>employee</item>
+    <item>patient</item>
+</string-array>
+
 </resources>

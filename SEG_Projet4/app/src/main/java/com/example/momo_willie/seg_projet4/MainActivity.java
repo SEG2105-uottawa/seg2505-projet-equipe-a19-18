@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String item = _spinner.getSelectedItem().toString();
-                if (_txtUser.getText().toString().equals("admin") && _txtPass.getText().toString().equals("admin") && item.equals("employee")) {
+                if (_txtUser.getText().toString().equals("employee")&& _txtPass.getText().toString().equals("employee")&& item.equals("employee")) {
                     Intent intent = new Intent(MainActivity.this, employee.class);
                     startActivity(intent);
-                } else if (_txtUser.getText().toString().equals("admin") && _txtPass.getText().toString().equals("admin") && item.equals("patient")) {
+                } else if (_txtUser.getText().toString().equals("employee") && _txtPass.getText().toString().equals("employee") && item.equals("patient")) {
                     Intent intent = new Intent(MainActivity.this, patient.class);
                     startActivity(intent);
                 } else {

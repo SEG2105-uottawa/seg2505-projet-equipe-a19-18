@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 if (_txtUser.getText().toString().equals("employee")&& _txtPass.getText().toString().equals("employee")&& item.equals("employee")) {
                     Intent intent = new Intent(MainActivity.this, employee.class);
                     startActivity(intent);
-                } else if (_txtUser.getText().toString().equals("employee") && _txtPass.getText().toString().equals("employee") && item.equals("patient")) {
+                } else if (_txtUser.getText().toString().equals("patient") && _txtPass.getText().toString().equals("patient") && item.equals("patient")) {
                     Intent intent = new Intent(MainActivity.this, patient.class);
                     startActivity(intent);
                 } else {

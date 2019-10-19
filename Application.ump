@@ -1,0 +1,188 @@
+class Administrateur
+{
+    isA Utlisateur;
+
+   * -- 1 CompteAdministrateur;
+}
+
+class Utlisateur
+{
+    isA Personne;
+}
+
+class Client
+{
+  isA Utlisateur;
+  1 -- 1 CompteClient;
+}
+
+class Employe
+{
+  isA Utlisateur;
+}
+
+class Personne
+{
+   nom;
+  int age;
+   sexe;
+  
+  * -> * Adresse;
+}
+
+class Adresse
+{
+  int numeroRue;
+  String rue;
+  String codePostal;
+  String ville;
+  1 <- 1 Clinique;
+}
+
+class Compte 
+{
+ String username;
+ String password;
+}
+
+class CompteClinique
+{
+  isA Compte;
+  1 -- 1 Employe;
+} 
+
+class Service 
+{
+  int prix;
+  String service;
+  * -- * CompteClinique;
+}
+
+class Clinique
+{
+  int heuresDeTravail;
+  int tempsAttente;
+  int nombreClients;
+  1 -- 0..* EvalutionExperience;
+  1 -- * RendezVous;
+  1 <- 1 CompteClinique;
+}
+
+class CompteClient
+{
+  isA Compte;
+  0..1 -> * EvalutionExperience;
+  0..1 -- * RendezVous;
+}
+
+class CompteAdministrateur
+{
+  isA Compte;
+  * -- 5..* Service;
+   1 -> 0..* CompteClinique;
+  1 -> 0..* CompteClient;
+}
+
+class EvalutionExperience
+{
+}
+
+class RendezVous
+{
+  String date;
+  
+  * -- * Service;
+}
+
+//$?[End_of_model]$?
+
+namespace -;
+
+
+class Administrateur
+{
+  position 124 232 109 42;
+  position.association Administrateur__CompteAdministrateur 63,41 51,0;
+}
+
+class Utlisateur
+{
+  position 24 129 109 41;
+}
+
+class Client
+{
+  position 269 227 109 42;
+  position.association Client__CompteClient 93,41 15,0;
+}
+
+class Employe
+{
+  position 3 212 109 41;
+}
+
+class Adresse
+{
+  position 551 65 150 114;
+  position.association Adresse__Clinique 98,109 91,0;
+}
+
+class Personne
+{
+  position 22 6 109 92;
+  position.association Personne__Adresse 110,40 0,41;
+  position.association Adresse__Personne 110,23 0,10;
+}
+
+class Compte
+{
+  position 382 106 141 74;
+}
+
+class Service
+{
+  position 9 479 122 75;
+  position.association Service__CompteEmploye 79,0 62,41;
+  position.association CompteEmploye__Service 35,0 40,41;
+  position.association CompteClinique__Service 21,0 25,41;
+}
+
+class Clinique
+{
+  position 317 529 161 96;
+  position.association Clinique__EvalutionExperience 155,0 31,42;
+  position.association Clinique__RendezVous 0,95 110,0;
+  position.association Clinique__CompteClinique 0,16 118,39;
+}
+
+class CompteClient
+{
+  position 371 406 109 42;
+  position.association CompteClient__EvalutionExperience 0,28 145,5;
+  position.association CompteClient__RendezVous 75,42 8,0;
+}
+
+class CompteAdministrateur
+{
+  position 135 329 155 41;
+  position.association CompteAdministrateur__Service 76,42 123,0;
+  position.association CompteAdministrateur__CompteClinique 0,32 83,0;
+  position.association CompteAdministrateur__CompteClient 154,42 3,0;
+}
+
+class EvalutionExperience
+{
+  position 228 430 144 42;
+}
+
+class RendezVous
+{
+  position 176 623 109 60;
+  position.association RendezVous__Service 0,51 123,62;
+}
+
+class CompteClinique
+{
+  position 5 391 117 41;
+  position.association CompteClinique__Employe 9,0 11,41;
+}

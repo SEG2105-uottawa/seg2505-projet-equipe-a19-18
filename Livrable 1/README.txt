@@ -7,7 +7,7 @@ the UML diagram and the apk,
 
 - Alexander Onofrei # 300089694
 
-- Felix Begin       #
+- Felix Begin       # 300079520
 
 - Simon Paquette    #
 

@@ -1,15 +1,25 @@
-This archive contains 6 files of the First Livrable, that is, this file(README.txt), the file Combination.java in the directory Q1, the file DoorLock.java in the directory Q2, the file SecurityAgent.java in the directory Q3 and the file Sum.java in the directory Q4.
+This archive contains all the files of the First Livrable, that is, this file(README.txt),
+the UML diagram and the apk,
 
-Team Members:
+*Groupe : A19-18
 
-Alexander Onofrei #300089694
-Felix Begin       #
-Simon Paquette    #
-Hadi El-Saleh     #
-Mamadou Diallo    #
+*Team Members:
+
+- Alexander Onofrei # 300089694
+
+- Felix Begin       #
+
+- Simon Paquette    #
+
+- Hadi El-Saleh     # 300028268
+
+- Mamadou Diallo    #
 
 
-This is the web Link for the UML class diagram on the UMPLE Online page.
+*This is the web Link for the UML class diagram on the UMPLE Online page:
 ---
 https://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=191012276330&fbclid=IwAR0w3cQF2ZTCEw6YK77dV4DIvZmQ5G7xpSUzXpN0qvwystNZUauLHDGfPoQ
+---
+
+*Here is the link for the Github directory : https://github.com/SEG2105-uottawa/seg2505-projet-equipe-a19-18
 ---

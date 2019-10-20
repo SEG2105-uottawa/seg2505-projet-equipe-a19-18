@@ -4,9 +4,9 @@ SEG 2505 - Apk projet
 
 - Alexander Onofrei # 300089694
 
-- Felix Begin       #
+- Felix Begin       # 300079520
 
-- Simon Paquette    #
+- Simon Paquette    # 300044038
 
 - Hadi El-Saleh     # 300028268
 

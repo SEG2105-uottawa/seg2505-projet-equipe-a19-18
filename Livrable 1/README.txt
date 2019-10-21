@@ -1,6 +1,10 @@
 This archive contains all the files of the First Livrable, that is, this file(README.txt),
 the UML diagram and the apk,
 
+************************************
+Ce projet était tester avec le emulator PIXEL 2 API 24
+************************************
+
 *Groupe : A19-18
 
 *Team Members:
@@ -15,6 +19,11 @@ the UML diagram and the apk,
 
 - Mamadou Diallo    #
 
+**********
+Notez que pour l'apk, il faut rentrer dans email "employee", et dans pass "employee" et sélectionner le type "employee" pour connecter en tant qu'employée, sinon une erreur va s'afficher
+Meme chose pour le patient avec email "patient" et pass "patient"
+Pour admin, il faut rentrer admin et choisir pass "5T5ptQ" comme mentionner aux instructions
+**********
 
 *This is the web Link for the UML class diagram on the UMPLE Online page:
 ---

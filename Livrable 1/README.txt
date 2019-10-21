@@ -1,4 +1,4 @@
-This archive contains all the files of the First Livrable, that is, this file(README.txt),
+This archive contains all the files of the First Delivrable, that is, this file(README.txt),
 the UML diagram and the apk,
 
 ************************************

@@ -16,7 +16,7 @@ import android.content.Intent;
 public class MainActivity extends AppCompatActivity {
 
     EditText _txtUser, _txtPass;
-    Button _btnLogin;
+    Button _btnLogin, _btnRegister;
     Spinner _spinner;
 
     @Override

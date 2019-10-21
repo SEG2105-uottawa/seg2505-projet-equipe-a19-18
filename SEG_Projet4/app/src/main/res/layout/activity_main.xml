@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/CREATE ACCOUNT"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -14,15 +13,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="51dp"
         android:layout_marginRight="51dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="202dp"
         android:fontFamily="monospace"
         android:text="Email"
         android:textColor="#E91E63"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toStartOf="@+id/txtUser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -128,14 +127,23 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnRegister"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
         app:layout_constraintVertical_bias="0.888" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="148dp"
-        android:layout_height="45dp"
+        android:id="@+id/btnRegister"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginRight="110dp"
+        android:layout_marginBottom="412dp"
         android:text="Create Account"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="241dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

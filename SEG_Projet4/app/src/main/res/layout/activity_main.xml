@@ -125,9 +125,9 @@
         android:textColorHint="#F80459"
         android:textColorLink="#3F51B5"
         android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@+id/btnRegister"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnRegister"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
         app:layout_constraintVertical_bias="0.888" />
 
@@ -145,5 +145,4 @@
         app:layout_constraintEnd_toStartOf="@+id/btnLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

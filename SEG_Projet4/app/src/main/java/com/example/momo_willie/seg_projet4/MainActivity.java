@@ -77,4 +77,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
         }
     }
+
+    public void createAccount(View view) {
+        Intent intent = new Intent(MainActivity.this, CreateAccount.class);
+        startActivity(intent);
+    }
 }

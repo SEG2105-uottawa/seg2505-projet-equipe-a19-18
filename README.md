@@ -15,7 +15,6 @@ CECI EST JUSTE UNE DESCRITPION DU PROJET!
 
 - Hadi El-Saleh     # 300028268
 
-- Mamadou Diallo    #
 
 Web Link for the UML class diagram on the UMPLE Online page:
 ---

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">SEG_Projet#4</string>
     <string-array name="usertype">
-        <item>administateur</item>
-        <item>employee</item>
+        <item>administrateur</item>
+        <item>employe</item>
         <item>patient</item>
     </string-array>
 

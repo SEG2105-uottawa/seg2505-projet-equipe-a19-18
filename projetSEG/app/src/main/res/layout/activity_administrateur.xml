@@ -30,15 +30,9 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Modifier un service"
-            android:onClick="listeServices"/>
+            android:onClick="listeServices"
+            android:text="Modifier ou supprimer un service" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Supprimer un service"
-            android:onClick="listeServices"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,11 +19,17 @@
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Vous êtes sur la page de création de compte"
-                android:textSize="24sp" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="24sp"
+                android:textStyle="bold" />
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="59dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +41,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:fontFamily="monospace"
+                android:paddingLeft="15dp"
+                android:text="Nom d'utilisateur"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+
 
             <EditText
                 android:id="@+id/editText"
@@ -43,8 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textPersonName" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -57,7 +68,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:fontFamily="monospace"
+                android:paddingLeft="15dp"
+                android:text="Mot De Passe"
+                android:textColor="#000000"
+                android:textSize="15sp" /><![CDATA[
+                />
+
+            ]]>
 
             <EditText
                 android:id="@+id/editText3"
@@ -76,10 +94,23 @@
 
             <Button
                 android:id="@+id/button4"
+                style="@android:style/Widget.Button.Toggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="12dp"
                 android:layout_weight="1"
-                android:text="Créer votre nouveau compte" />
+                android:background="#880724"
+                android:fontFamily="casual"
+                android:onClick="createAccount"
+                android:padding="8dp"
+                android:text="Créer votre nouveau compte"
+                android:textAllCaps="true"
+                android:textColor="#BBDEFB"
+                android:textColorHint="#D3133DD3"
+                android:textColorLink="#FAC4194F"
+
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

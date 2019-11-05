@@ -6,4 +6,10 @@
         <item>administrateur</item>
     </string-array>
 
+    <string-array name="role">
+        <item>Doctor</item>
+        <item>Nurse</item>
+        <item>Staff</item>
+    </string-array>
+
 </resources>

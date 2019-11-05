@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class NouveauService extends AppCompatActivity {
 
     EditText description;
-    EditText role;
+    View spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +22,12 @@ public class NouveauService extends AppCompatActivity {
     public void Creation (View view) {
 
         description = findViewById(R.id.description);
-        role = findViewById(R.id.role);
+        spinner = findViewById(R.id.spinner);
 
         if (description.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Veuillez donner une description", Toast.LENGTH_LONG).show();
-        } else if (role.getText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(), "Veuillez donner un role", Toast.LENGTH_LONG).show();
+        } else if (spinner.equals("")) {
+            Toast.makeText(getApplicationContext(), "Veuillez choisir un role", Toast.LENGTH_LONG).show();
         } else {
             Intent intent = new Intent(NouveauService.this, Administrateur.class);
             startActivity(intent);

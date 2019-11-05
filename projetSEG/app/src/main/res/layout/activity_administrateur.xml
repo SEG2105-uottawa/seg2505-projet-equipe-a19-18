@@ -33,6 +33,12 @@
             android:onClick="listeServices"
             android:text="Modifier ou supprimer un service" />
 
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Supprimer un compte" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

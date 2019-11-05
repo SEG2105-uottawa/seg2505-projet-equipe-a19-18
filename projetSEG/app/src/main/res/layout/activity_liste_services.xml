@@ -17,5 +17,12 @@
             android:layout_height="wrap_content"
             android:text="Liste des services offerts"
             android:textSize="24sp" />
+
+        <Spinner
+            android:id="@+id/spinnerServices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

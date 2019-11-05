@@ -43,8 +43,8 @@
             android:text="Entrez le role de la personne effectuant le service:"
             android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/role"
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

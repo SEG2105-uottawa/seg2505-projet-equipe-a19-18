@@ -14,12 +14,16 @@ public class Administrateur extends AppCompatActivity {
         setContentView(R.layout.activity_administrateur);
     }
 
-    public void nouveauService(View view){
+    public void NouveauService(View view){
         Intent intent = new Intent(Administrateur.this, NouveauService.class);
         startActivity(intent);
     }
-    public void listeServices(View view){
+    public void ListeServices(View view){
         Intent intent = new Intent(Administrateur.this, ListeServices.class);
+        startActivity(intent);
+    }
+    public void SupprimerCompte(View view) {
+        Intent intent = new Intent(Administrateur.this, SupprimerCompte.class);
         startActivity(intent);
     }
 }

@@ -26,14 +26,14 @@ public class CreateAccount extends AppCompatActivity {
         txtUser = findViewById(R.id.txtUser);
 
         if (!Mdp2.getText().toString().equals(Mdp.getText().toString())) {
-            Toast.makeText(getApplicationContext(), "Mot de passe différent", Toast.LENGTH_LONG).show();
-        } else if (txtUser.getText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(), "Entrez un nom d'utilisateur", Toast.LENGTH_LONG).show();
-        } else {
+            Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
+        } else if(Mdp2.getText().toString().equals(Mdp.getText().toString())&&!txtUser.getText().toString().equals(null)&&txtUser.getText().toString().equals(" ")&&!Mdp.getText().toString().equals(null)){
             Intent intent = new Intent(CreateAccount.this, Patient.class);
             /*verifier si le employe a un id*/
             /*a rentrer pour verifier qu'il a le droit de faire les changements par la suite}*/
             startActivity(intent);
+        } else{
+            Toast.makeText(getApplicationContext(), "Entrez un mot de passe et un nom d'utilisateur.", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -44,14 +44,14 @@ public class CreateAccount extends AppCompatActivity {
         txtUser = findViewById(R.id.txtUser);
 
         if (!Mdp2.getText().toString().equals(Mdp.getText().toString())) {
-            Toast.makeText(getApplicationContext(), "Mot de passe différent", Toast.LENGTH_LONG).show();
-        } else if (txtUser.getText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(), "Entrez un nom d'utilisateur", Toast.LENGTH_LONG).show();
-        } else {
+            Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
+        } else if(!(txtUser.getText().toString()==null)&&!(Mdp.getText().toString()==(null))){
             Intent intent = new Intent(CreateAccount.this, Employe.class);
             /*verifier si le employe a un id*/
             /*a rentrer pour verifier qu'il a le droit de faire les changements par la suite}*/
             startActivity(intent);
+        } else{
+            Toast.makeText(getApplicationContext(), "Entrez un mot de passe et un nom d'utilisateur.", Toast.LENGTH_LONG).show();
         }
     }
 }

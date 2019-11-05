@@ -8,16 +8,20 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class CreateAccount extends AppCompatActivity {
 
     EditText Mdp, Mdp2 , txtUser;
-
+    private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
     }
     public void createAccountPatient(View view) {
 
@@ -28,9 +32,12 @@ public class CreateAccount extends AppCompatActivity {
         if (!Mdp2.getText().toString().equals(Mdp.getText().toString())) {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals(""))&&!(Mdp.getText().toString().equals(""))){
+
+            User user = new User(txtUser.getText().toString(), Mdp.getText().toString(), "Patient");
+            data.push().setValue(user);
+
             Intent intent = new Intent(CreateAccount.this, Patient.class);
-            /*verifier si le employe a un id*/
-            /*a rentrer pour verifier qu'il a le droit de faire les changements par la suite}*/
+            intent.putExtra("name", txtUser.getText().toString());
             startActivity(intent);
         } else{
             Toast.makeText(getApplicationContext(), "Entrez un mot de passe et un nom d'utilisateur.", Toast.LENGTH_LONG).show();
@@ -46,10 +53,14 @@ public class CreateAccount extends AppCompatActivity {
         if (!Mdp2.getText().toString().equals(Mdp.getText().toString())) {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals("")&&!(Mdp.getText().toString().equals("")))){
+
+            User user = new User(txtUser.getText().toString(), Mdp.getText().toString(), "Employe");
+            data.push().setValue(user);
+
             Intent intent = new Intent(CreateAccount.this, Employe.class);
-            /*verifier si le employe a un id*/
-            /*a rentrer pour verifier qu'il a le droit de faire les changements par la suite}*/
+            intent.putExtra("name", txtUser.getText().toString());
             startActivity(intent);
+
         } else{
             Toast.makeText(getApplicationContext(), "Entrez un mot de passe et un nom d'utilisateur.", Toast.LENGTH_LONG).show();
         }

@@ -16,6 +16,8 @@ public class CreateAccount extends AppCompatActivity {
 
     EditText Mdp, Mdp2 , txtUser;
     private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference patient = data.child("Patient");
+    private DatabaseReference employe = data.child("Employe");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,8 @@ public class CreateAccount extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals(""))&&!(Mdp.getText().toString().equals(""))){
 
-            User user = new User(txtUser.getText().toString(), Mdp.getText().toString(), "Patient");
-            data.push().setValue(user);
+            User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
+            patient.push().setValue(user);
 
             Intent intent = new Intent(CreateAccount.this, Patient.class);
             intent.putExtra("name", txtUser.getText().toString());
@@ -54,8 +56,8 @@ public class CreateAccount extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals("")&&!(Mdp.getText().toString().equals("")))){
 
-            User user = new User(txtUser.getText().toString(), Mdp.getText().toString(), "Employe");
-            data.push().setValue(user);
+            User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
+            employe.push().setValue(user);
 
             Intent intent = new Intent(CreateAccount.this, Employe.class);
             intent.putExtra("name", txtUser.getText().toString());

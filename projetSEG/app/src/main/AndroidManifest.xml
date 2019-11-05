@@ -12,6 +12,7 @@
         <activity android:name=".CreateAccount"></activity>
         <activity android:name=".ListeServices" />
         <activity android:name=".NouveauService" />
+        <activity android:name=".SupprimerCompte" />
         <activity android:name=".Administrateur" />
         <activity android:name=".Patient" />
         <activity android:name=".Employe" />

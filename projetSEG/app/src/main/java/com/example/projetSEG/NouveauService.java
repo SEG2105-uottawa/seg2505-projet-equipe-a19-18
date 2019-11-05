@@ -8,7 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class NouveauService extends AppCompatActivity {
+
+    private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference service = data.child("Service");
 
     EditText description;
     View spinner;

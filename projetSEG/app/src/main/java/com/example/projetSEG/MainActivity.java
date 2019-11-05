@@ -10,9 +10,14 @@ import android.widget.Toast;
 import android.widget.Spinner;
 import android.content.Intent;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
 
     EditText _txtUser, _txtPass;
     Spinner _spinner;
@@ -28,33 +33,6 @@ public class MainActivity extends AppCompatActivity {
         _spinner.setAdapter(adapter);
 
 
-        /*Jutilise la methode login(View view) pour implementer ce qui suit....
-
-
-
-        _btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-                String item = _spinner.getSelectedItem().toString();
-                if (_txtUser.getText().toString().equals("admin")&& _txtPass.getText().toString().equals("5T5ptQ")&& item.equals("administateur")) {
-                    Intent intent = new Intent(MainActivity.this, Administateur.class);
-                    startActivity(intent);
-                }
-                else if (_txtUser.getText().toString().equals("employee")&& _txtPass.getText().toString().equals("employee")&& item.equals("employee")) {
-                    Intent intent = new Intent(MainActivity.this, Employee.class);
-                    startActivity(intent);
-                }
-                else if (_txtUser.getText().toString().equals("patient") && _txtPass.getText().toString().equals("patient") && item.equals("patient")) {
-                    Intent intent = new Intent(MainActivity.this, Patient.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-        */
     }
 
     public void login(View view){

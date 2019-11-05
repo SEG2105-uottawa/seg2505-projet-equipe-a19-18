@@ -27,7 +27,7 @@ public class CreateAccount extends AppCompatActivity {
 
         if (!Mdp2.getText().toString().equals(Mdp.getText().toString())) {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
-        } else if(Mdp2.getText().toString().equals(Mdp.getText().toString())&&!txtUser.getText().toString().equals(null)&&txtUser.getText().toString().equals(" ")&&!Mdp.getText().toString().equals(null)){
+        } else if(!(txtUser.getText().toString()==null)&&!(Mdp.getText().toString()==(null))){
             Intent intent = new Intent(CreateAccount.this, Patient.class);
             /*verifier si le employe a un id*/
             /*a rentrer pour verifier qu'il a le droit de faire les changements par la suite}*/

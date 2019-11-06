@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("name", _txtUser.getText().toString());
             startActivity(intent);
         } else {
-            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Mot de passe ou nom d'utilisateur invalide", Toast.LENGTH_LONG).show();
         }
     }
 

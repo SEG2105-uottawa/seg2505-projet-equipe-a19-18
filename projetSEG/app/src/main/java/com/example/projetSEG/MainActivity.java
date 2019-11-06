@@ -41,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, Administrateur.class);
             startActivity(intent);
         }
-        else if (_txtUser.getText().toString().equals("employe")&& _txtPass.getText().toString().equals("employe")&& _spinner.getSelectedItem().toString().equals("employe")) {
-            Intent intent = new Intent(MainActivity.this, Employe.class);
-            intent.putExtra("name", _txtUser.getText().toString());
+        else if (_txtUser.getText().toString().equals("employe")&& _txtPass.getText().toString().equals("employe")&& _spinner.getSelectedItem(111111111111111
             startActivity(intent);
         }
         else if (_txtUser.getText().toString().equals("patient") && _txtPass.getText().toString().equals("patient") && _spinner.getSelectedItem().toString().equals("patient")) {

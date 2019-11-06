@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class NouveauService extends AppCompatActivity {
+public class NouveauService<adapter2> extends AppCompatActivity {
 
     private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference service = data.child("Service");
@@ -21,16 +21,16 @@ public class NouveauService extends AppCompatActivity {
     EditText description;
     Spinner spinner;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nouveau_service);
 
         spinner = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.role, R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter2);
         description = findViewById(R.id.description);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.role, R.layout.support_simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
     }
 
     public void Creation (View view) {

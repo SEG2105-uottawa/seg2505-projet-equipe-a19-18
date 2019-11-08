@@ -16,7 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
 
     EditText _txtUser, _txtPass;

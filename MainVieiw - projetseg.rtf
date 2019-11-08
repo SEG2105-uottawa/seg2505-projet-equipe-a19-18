@@ -1,0 +1,379 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fnil\fcharset0 Menlo-Italic;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue254;\red15\green112\blue3;\red0\green0\blue109;
+\red82\green0\blue103;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c99608;\csgenericrgb\c5882\c43922\c1176;\csgenericrgb\c0\c0\c42745;
+\csgenericrgb\c32157\c0\c40392;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\i\fs24 \cf0 <?
+\f1\i0\b \cf2 xml version\cf3 ="1.0" \cf2 encoding\cf3 ="utf-8"
+\f0\i\b0 \cf0 ?>\
+
+\f2\i0 <
+\f1\b \cf4 androidx.constraintlayout.widget.ConstraintLayout \cf2 xmlns:\cf5 android\cf3 ="http://schemas.android.com/apk/res/android"\
+    \cf2 xmlns:\cf5 app\cf3 ="http://schemas.android.com/apk/res-auto"\
+    \cf2 xmlns:\cf5 tools\cf3 ="http://schemas.android.com/tools"\
+    \cf5 android\cf2 :layout_width\cf3 ="match_parent"\
+    \cf5 android\cf2 :layout_height\cf3 ="match_parent"\
+    \cf5 tools\cf2 :context\cf3 =".MainActivity"\
+    \cf5 app\cf2 :layout_constraintTop_toTopOf\cf3 ="parent"
+\f2\b0 \cf0 >\
+\
+    <
+\f1\b \cf4 LinearLayout\
+        \cf5 android\cf2 :layout_width\cf3 ="match_parent"\
+        \cf5 android\cf2 :layout_height\cf3 ="match_parent"\
+        \cf5 android\cf2 :orientation\cf3 ="vertical"\
+        \cf5 android\cf2 :layout_gravity\cf3 ="center_vertical"
+\f2\b0 \cf0 >\
+\
+        <
+\f1\b \cf4 Space\
+            \cf5 android\cf2 :layout_width\cf3 ="match_parent"\
+            \cf5 android\cf2 :layout_height\cf3 ="75dp"\
+            \cf5 android\cf2 :visibility\cf3 ="visible" 
+\f2\b0 \cf0 />\
+\
+\
+\
+\
+\
+        <
+\f1\b \cf4 TextView\
+            \cf5 android\cf2 :id\cf3 ="@+id/Header"\
+            \cf5 android\cf2 :layout_width\cf3 ="match_parent"\
+            \cf5 android\cf2 :layout_height\cf3 ="50dp"\
+            \cf5 android\cf2 :gravity\cf3 ="center"\
+            \cf5 android\cf2 :text\cf3 ="LOGIN"\
+            \cf5 android\cf2 :textSize\cf3 ="32dp" 
+\f2\b0 \cf0 />\
+\
+        <
+\f1\b \cf4 Space\
+            \cf5 android\cf2 :layout_width\cf3 ="match_parent"\
+            \cf5 android\cf2 :layout_height\cf3 ="50dp"\
+            \cf5 android\cf2 :visibility\cf3 ="visible" 
+\f2\b0 \cf0 />\
+\
+\
+        <
+\f1\b \cf4 EditText\
+                \cf5 android\cf2 :id\cf3 ="@+id/txtUser"\
+                \cf5 android\cf2 :layout_width\cf3 ="match_parent"\
+                \cf5 android\cf2 :layout_height\cf3 ="wrap_content"\
+                \cf5 android\cf2 :ems\cf3 ="10"\
+                \cf5 android\cf2 :inputType\cf3 ="textPersonName"\
+                \cf5 android\cf2 :paddingRight\cf3 ="15dp"\
+                \cf5 android\cf2 :text\cf3 =""\
+                \cf5 android\cf2 :hint\cf3 ="Utilisateur"
+\f2\b0 \cf0 />\
+\
+\
+            <
+\f1\b \cf4 EditText\
+                \cf5 android\cf2 :id\cf3 ="@+id/txtPass"\
+                \cf5 android\cf2 :layout_width\cf3 ="match_parent"\
+                \cf5 android\cf2 :layout_height\cf3 ="wrap_content"\
+                \cf5 android\cf2 :ems\cf3 ="10"\
+                \cf5 android\cf2 :paddingRight\cf3 ="15dp"\
+                \cf5 android\cf2 :inputType\cf3 ="textPassword"\
+                \cf5 android\cf2 :hint\cf3 ="Utilisateur"
+\f2\b0 \cf0 />\
+\
+            <
+\f1\b \cf4 TextView\
+                \cf5 android\cf2 :id\cf3 ="@+id/textView3"\
+                \cf5 android\cf2 :layout_width\cf3 ="wrap_content"\
+                \cf5 android\cf2 :layout_height\cf3 ="wrap_content"\
+                \cf5 android\cf2 :fontFamily\cf3 ="casual"\
+                \cf5 android\cf2 :paddingLeft\cf3 ="15dp"\
+                \cf5 android\cf2 :text\cf3 ="Type d'utilisateur"\
+                \cf5 android\cf2 :textColor\cf3 ="#000000"\
+                \cf5 android\cf2 :textSize\cf3 ="20dp" 
+\f2\b0 \cf0 />\
+\
+            <
+\f1\b \cf4 Spinner\
+                \cf5 android\cf2 :id\cf3 ="@+id/spinner"\
+                \cf5 android\cf2 :paddingLeft\cf3 ="15dp"\
+                \cf5 android\cf2 :layout_width\cf3 ="wrap_content"\
+                \cf5 android\cf2 :layout_height\cf3 ="wrap_content"\
+                \cf5 android\cf2 :theme\cf3 ="@style/AppTheme" 
+\f2\b0 \cf0 />\
+\
+            <
+\f1\b \cf4 Button\
+                \cf5 android\cf2 :id\cf3 ="@+id/btnLogin"\
+                \cf2 style\cf3 ="@style/Widget.AppCompat.Button.Colored"\
+                \cf5 android\cf2 :layout_width\cf3 ="wrap_content"\
+                \cf5 android\cf2 :layout_height\cf3 ="wrap_content"\
+                \cf5 android\cf2 :textColor\cf3 ="#BBDEFB"\
+                \cf5 android\cf2 :textColorLink\cf3 ="#FACE2525"\
+                \cf5 android\cf2 :fontFamily\cf3 ="cursive"\
+                \cf5 android\cf2 :onClick\cf3 ="login"\
+                \cf5 android\cf2 :paddingRight\cf3 ="15dp"\
+                \cf5 android\cf2 :text\cf3 ="Connexion"\
+                \cf5 android\cf2 :textSize\cf3 ="25dp" 
+\f2\b0 \cf0 />\
+\
+\
+            <
+\f1\b \cf4 Button\
+                \cf5 android\cf2 :id\cf3 ="@+id/btnRegister"\
+                \cf2 style\cf3 ="@android:style/Widget.Button.Toggle"\
+                \cf5 android\cf2 :layout_width\cf3 ="wrap_content"\
+                \cf5 android\cf2 :layout_height\cf3 ="wrap_content"\
+                \cf5 android\cf2 :layout_margin\cf3 ="12dp"\
+                \cf5 android\cf2 :background\cf3 ="#7C0705"\
+                \cf5 android\cf2 :fontFamily\cf3 ="casual"\
+                \cf5 android\cf2 :onClick\cf3 ="createAccount"\
+                \cf5 android\cf2 :padding\cf3 ="8dp"\
+                \cf5 android\cf2 :selectAllOnFocus\cf3 ="true"\
+                \cf5 android\cf2 :singleLine\cf3 ="true"\
+                \cf5 android\cf2 :soundEffectsEnabled\cf3 ="true"\
+                \cf5 android\cf2 :text\cf3 ="Cr\'e9er un nouveau compte"\
+                \cf5 android\cf2 :textAllCaps\cf3 ="true"\
+                \cf5 android\cf2 :textColor\cf3 ="#BBDEFB"\
+                \cf5 android\cf2 :textColorHint\cf3 ="#D3133DD3"\
+                \cf5 android\cf2 :textColorLink\cf3 ="#FACE2525"\
+                \cf5 android\cf2 :textSize\cf3 ="18sp"\
+                \cf5 android\cf2 :textStyle\cf3 ="bold" 
+\f2\b0 \cf0 />\
+\
+        </
+\f1\b \cf4 LinearLayout
+\f2\b0 \cf0 >\
+\
+</
+\f1\b \cf4 androidx.constraintlayout.widget.ConstraintLayout
+\f2\b0 \cf0 >\
+\
+\
+\
+\
+\
+\
+ xmlns:tools="http://schemas.android.com/tools"\
+    android:layout_width="match_parent"\
+    android:layout_height="match_parent"\
+    tools:context=".MainActivity">\
+    app:layout_constraintTop_toTopOf="parent"\
+    tools:context=".MainActivity"\
+    app:layout_constraintTop_toTopOf="parent">\
+\
+    <LinearLayout\
+        android:layout_width="match_parent"\
+        android:layout_height="match_parent"\
+        android:orientation="vertical">\
+        android:layout_gravity="center_vertical"\
+        android:orientation="vertical"\
+        app:layout_constraintBottom_toBottomOf="parent"\
+        app:layout_constraintEnd_toEndOf="parent"\
+        app:layout_constraintHorizontal_bias="0.0"\
+        app:layout_constraintStart_toStartOf="parent"\
+        app:layout_constraintTop_toTopOf="parent"\
+        app:layout_constraintVertical_bias="0.0">\
+\
+        <Space\
+            android:layout_width="match_parent"\
+            android:layout_height="51dp" />\
+            android:layout_height="75dp"\
+            android:visibility="visible" />\
+\
+        <LinearLayout\
+            android:layout_width="match_parent"\
+            android:layout_height="wrap_content"\
+            android:orientation="horizontal">\
+\
+            <TextView\
+                android:id="@+id/textView"\
+                android:layout_width="wrap_content"\
+                android:layout_height="wrap_content"\
+                android:fontFamily="monospace"\
+                android:paddingLeft="15dp"\
+                android:text="Utilisateur"\
+                android:textColor="#E91E63"\
+                android:textSize="24sp" />\
+        <ImageView\
+            android:layout_width="wrap_content"\
+            android:layout_height="77dp"\
+            android:layout_gravity="center_horizontal"\
+            android:layout_marginBottom="24dp"\
+            android:src="@drawable/unnamed" />\
+\
+            <EditText\
+                android:id="@+id/txtUser"\
+                android:layout_width="match_parent"\
+                android:layout_height="wrap_content"\
+                android:ems="10"\
+                android:inputType="textPersonName"\
+                android:paddingRight="15dp"\
+                android:text="" />\
+        </LinearLayout>\
+\
+        <LinearLayout\
+            android:layout_width="match_parent"\
+            android:layout_height="8dp"\
+            android:layout_weight="1"\
+            android:orientation="horizontal">\
+\
+            <TextView\
+                android:id="@+id/textView2"\
+                android:layout_width="wrap_content"\
+                android:layout_height="wrap_content"\
+                android:fontFamily="monospace"\
+                android:paddingLeft="15dp"\
+                android:text="Mot de passe"\
+                android:textColor="#E91E63"\
+                android:textSize="24sp" />\
+\
+            <EditText\
+                android:id="@+id/txtPass"\
+                android:layout_width="wrap_content"\
+                android:layout_height="wrap_content"\
+                android:layout_weight="1"\
+                android:ems="10"\
+                android:inputType="textPassword" />\
+\
+        </LinearLayout>\
+\
+        <LinearLayout\
+        <EditText\
+            android:id="@+id/txtUser"\
+            android:layout_width="match_parent"\
+            android:layout_height="wrap_content"\
+            android:orientation="horizontal">\
+\
+            <TextView\
+                android:id="@+id/textView3"\
+                android:layout_width="wrap_content"\
+                android:layout_height="wrap_content"\
+                android:fontFamily="casual"\
+                android:paddingLeft="15dp"\
+                android:text="Type d'utilisateur"\
+                android:textColor="#000000"\
+                android:textSize="20dp" />\
+\
+            <Spinner\
+                android:id="@+id/spinner"\
+                android:paddingLeft="15dp"\
+                android:layout_width="wrap_content"\
+                android:layout_height="wrap_content"\
+                android:theme="@style/AppTheme" />\
+        </LinearLayout>\
+\
+        <LinearLayout\
+            android:ems="10"\
+            android:hint="Utilisateur"\
+            android:layout_marginBottom="12dp"\
+            android:inputType="textPersonName"\
+            android:paddingRight="15dp"\
+            android:text="" />\
+\
+        <EditText\
+            android:id="@+id/txtPass"\
+            android:layout_width="match_parent"\
+            android:layout_height="wrap_content"\
+            android:layout_weight="1"\
+            android:orientation="horizontal"\
+            android:gravity="center" >>\
+\
+            <Button\
+                android:id="@+id/btnLogin"\
+                style="@style/Widget.AppCompat.Button.Colored"\
+                android:layout_width="wrap_content"\
+                android:layout_height="wrap_content"\
+                android:textColor="#BBDEFB"\
+                android:textColorLink="#FACE2525"\
+                android:fontFamily="cursive"\
+                android:onClick="login"\
+                android:paddingRight="15dp"\
+                android:text="Connexion"\
+                android:textSize="25dp" />\
+\
+        </LinearLayout>\
+\
+        <LinearLayout\
+            android:layout_width="match_parent"\
+            android:ems="10"\
+            android:layout_marginBottom="12dp"\
+            android:hint="Mot De passe"\
+            android:inputType="textPassword"\
+            android:paddingRight="15dp" />\
+\
+\
+        <Spinner\
+            android:id="@+id/spinner"\
+            android:layout_width="200dp"\
+            android:layout_height="67dp"\
+            android:layout_gravity="left"\
+            android:paddingLeft="15dp"\
+            android:theme="@style/AppTheme" />\
+\
+\
+        <Button\
+            android:id="@+id/btnLogin"\
+            style="@style/Widget.AppCompat.Button.Colored"\
+            android:layout_width="227dp"\
+            android:layout_height="wrap_content"\
+            android:layout_weight="3"\
+            android:orientation="horizontal"\
+            android:gravity="center" >\
+\
+            <Button\
+                android:id="@+id/btnRegister"\
+                style="@android:style/Widget.Button.Toggle"\
+                android:layout_width="wrap_content"\
+                android:layout_height="wrap_content"\
+                android:layout_margin="12dp"\
+                android:background="#7C0705"\
+                android:fontFamily="casual"\
+                android:onClick="createAccount"\
+                android:padding="8dp"\
+                android:selectAllOnFocus="true"\
+                android:singleLine="true"\
+                android:soundEffectsEnabled="true"\
+                android:text="Cr\'e9er un nouveau compte"\
+                android:textAllCaps="true"\
+                android:textColor="#BBDEFB"\
+                android:textColorHint="#D3133DD3"\
+                android:textColorLink="#FACE2525"\
+                android:textSize="18sp"\
+                android:textStyle="bold" />\
+            android:layout_gravity="right"\
+            android:background="#0C1E96"\
+            android:fontFamily="casual"\
+            android:onClick="login"\
+            android:paddingRight="15dp"\
+            android:text="Connexion"\
+            android:textSize="25dp"\
+            android:textStyle="bold" />\
+\
+        <!--style="@android:style/Widget.Button.Toggle"-->\
+\
+\
+        <Button\
+            android:id="@+id/btnRegister"\
+            style="@style/Widget.AppCompat.Button.Borderless"\
+            android:layout_width="fill_parent"\
+            android:layout_height="wrap_content"\
+            android:layout_margin="12dp"\
+            android:layout_marginBottom="24dp"\
+            android:fontFamily="casual"\
+            android:gravity="center"\
+            android:onClick="createAccount"\
+            android:padding="20dp"\
+            android:soundEffectsEnabled="true"\
+            android:text="Cr\'e9er un nouveau compte"\
+            android:textAllCaps="true"\
+            android:textColor="#3949AB"\
+            android:textSize="16dip"\
+            android:textStyle="bold" />\
+\
+        </LinearLayout>\
+    </LinearLayout>\
+\
+</androidx.constraintlayout.widget.ConstraintLayout>}

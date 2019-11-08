@@ -4,143 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    app:layout_constraintTop_toTopOf="parent"
+    tools:context=".MainActivity"
+    app:layout_constraintTop_toTopOf="parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="51dp" />
+            android:layout_height="75dp"
+            android:visibility="visible" />
 
-        <LinearLayout
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="77dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/unnamed" />
+
+
+        <EditText
+            android:id="@+id/txtUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:ems="10"
+            android:hint="Utilisateur"
+            android:layout_marginBottom="12dp"
+            android:inputType="textPersonName"
+            android:paddingRight="15dp"
+            android:text="" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="monospace"
-                android:paddingLeft="15dp"
-                android:text="Utilisateur"
-                android:textColor="#E91E63"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/txtUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:paddingRight="15dp"
-                android:text="" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="monospace"
-                android:paddingLeft="15dp"
-                android:text="Mot de passe"
-                android:textColor="#E91E63"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/txtPass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPassword" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <EditText
+            android:id="@+id/txtPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:ems="10"
+            android:layout_marginBottom="12dp"
+            android:hint="Mot De passe"
+            android:inputType="textPassword"
+            android:paddingRight="15dp" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="casual"
-                android:paddingLeft="15dp"
-                android:text="Type d'utilisateur"
-                android:textColor="#000000"
-                android:textSize="20dp" />
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:paddingLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:theme="@style/AppTheme" />
-        </LinearLayout>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="200dp"
+            android:layout_height="67dp"
+            android:layout_gravity="left"
+            android:paddingLeft="15dp"
+            android:theme="@style/AppTheme" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="227dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center" >>
+            android:layout_gravity="right"
+            android:background="#0C1E96"
+            android:fontFamily="casual"
+            android:onClick="login"
+            android:paddingRight="15dp"
+            android:text="Connexion"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnLogin"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#BBDEFB"
-                android:textColorLink="#FACE2525"
-                android:fontFamily="cursive"
-                android:onClick="login"
-                android:paddingRight="15dp"
-                android:text="Connexion"
-                android:textSize="25dp" />
+        <!--style="@android:style/Widget.Button.Toggle"-->
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnRegister"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:orientation="horizontal"
-            android:gravity="center" >
+            android:layout_margin="12dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:onClick="createAccount"
+            android:padding="20dp"
+            android:soundEffectsEnabled="true"
+            android:text="Créer un nouveau compte"
+            android:textAllCaps="true"
+            android:textColor="#3949AB"
+            android:textSize="16dip"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnRegister"
-                style="@android:style/Widget.Button.Toggle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:background="#7C0705"
-                android:fontFamily="casual"
-                android:onClick="createAccount"
-                android:padding="8dp"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:soundEffectsEnabled="true"
-                android:text="Créer un nouveau compte"
-                android:textAllCaps="true"
-                android:textColor="#BBDEFB"
-                android:textColorHint="#D3133DD3"
-                android:textColorLink="#FACE2525"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

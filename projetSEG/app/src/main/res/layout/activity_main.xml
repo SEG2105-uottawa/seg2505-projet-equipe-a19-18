@@ -36,10 +36,11 @@
             android:id="@+id/txtUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:ems="10"
             android:hint="Utilisateur"
-            android:layout_marginBottom="12dp"
             android:inputType="textPersonName"
+            android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:text="" />
 
@@ -47,10 +48,11 @@
             android:id="@+id/txtPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:layout_marginBottom="12dp"
+            android:ems="10"
             android:hint="Mot De passe"
             android:inputType="textPassword"
+            android:paddingLeft="15dp"
             android:paddingRight="15dp" />
 
 
@@ -69,7 +71,7 @@
             android:layout_width="227dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:background="#0C1E96"
+            android:background="@color/colorPrimary"
             android:fontFamily="casual"
             android:onClick="login"
             android:paddingRight="15dp"
@@ -94,7 +96,7 @@
             android:soundEffectsEnabled="true"
             android:text="Créer un nouveau compte"
             android:textAllCaps="true"
-            android:textColor="#3949AB"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16dip"
             android:textStyle="bold" />
 

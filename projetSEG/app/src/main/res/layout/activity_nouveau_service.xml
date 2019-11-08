@@ -15,33 +15,33 @@
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="15dp"
             android:text="Création d'un nouveau service"
+            android:textColor="#000000"
             android:textSize="24sp" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="50dp" />
 
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Entrez une description du service:"
-            android:textSize="24sp" />
-
         <EditText
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:hint="Entrez une description du service"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp" />
 
         <TextView
             android:id="@+id/textView40"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Entrez le role de la personne effectuant le service:"
-            android:textSize="24sp" />
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Choisissez le role de la personne effectuant le service:"
+            android:textSize="18sp" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -58,8 +58,10 @@
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
             android:onClick="Creation"
-            android:text="Créer le service" />
+            android:text="Créer le service"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

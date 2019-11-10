@@ -22,7 +22,6 @@ public class NouveauService<adapter2> extends AppCompatActivity {
     EditText description;
     Spinner spinner;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

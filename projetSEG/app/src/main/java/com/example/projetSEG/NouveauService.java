@@ -47,6 +47,7 @@ public class NouveauService<adapter2> extends AppCompatActivity {
             service.push().setValue(newService);
 
             Intent intent = new Intent(NouveauService.this, Administrateur.class);
+            intent.putExtra("nouveauService", "Le service à bien été créé");
             startActivity(intent);
         }
     }

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Administrateur extends AppCompatActivity {
 
@@ -12,6 +14,11 @@ public class Administrateur extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrateur);
+
+        TextView action = findViewById(R.id.action);
+        Intent intent = getIntent();
+        String actionName = intent.getStringExtra("nouveauService");
+        action.setText(actionName);
     }
 
     public void nouveauService(View view){

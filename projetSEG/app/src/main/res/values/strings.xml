@@ -7,11 +7,11 @@
     </string-array>
 
     <string-array name="role">
-        <item>Doctor</item>
-        <item>Nurse</item>
-        <item>Staff</item>
+        <item> </item>
+        <item>Médecin</item>
+        <item>Infirmier</item>
+        <item>Personnel</item>
     </string-array>
 
-    <string-array name="service">
-    </string-array>
+
 </resources>

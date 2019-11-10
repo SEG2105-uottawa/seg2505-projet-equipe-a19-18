@@ -1,0 +1,250 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Italic;
+\f3\fnil\fcharset0 Menlo-BoldItalic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue109;\red82\green0\blue103;\red15\green112\blue3;
+\red109\green111\blue5;\red109\green109\blue109;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c42745;\csgenericrgb\c32157\c0\c40392;\csgenericrgb\c5882\c43922\c1176;
+\csgenericrgb\c42745\c43529\c1961;\csgenericrgb\c42745\c42745\c42745;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf2 package 
+\f1\b0 \cf0 com.example.projetSEG;\
+\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 androidx.appcompat.app.AppCompatActivity;\
+\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.os.Bundle;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.view.View;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.widget.ArrayAdapter;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.widget.EditText;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.widget.Toast;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.widget.Spinner;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 android.content.Intent;\
+\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.google.firebase.database.DatabaseReference;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.google.firebase.database.FirebaseDatabase;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.google.firebase.database.DataSnapshot;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.google.firebase.database.DatabaseError;\
+
+\f0\b \cf2 import 
+\f1\b0 \cf0 com.google.firebase.database.ValueEventListener;\
+\
+\
+
+\f0\b \cf2 public class 
+\f1\b0 \cf0 MainActivity 
+\f0\b \cf2 extends 
+\f1\b0 \cf0 AppCompatActivity \{\
+\
+    
+\f0\b \cf2 private 
+\f1\b0 \cf0 DatabaseReference 
+\f0\b \cf3 data 
+\f1\b0 \cf0 = FirebaseDatabase.
+\f2\i getInstance
+\f1\i0 ().getReference(
+\f0\b \cf4 "users"
+\f1\b0 \cf0 );\
+\
+    EditText 
+\f0\b \cf3 _txtUser
+\f1\b0 \cf0 , 
+\f0\b \cf3 _txtPass
+\f1\b0 \cf0 ;\
+    Spinner 
+\f0\b \cf3 _spinner
+\f1\b0 \cf0 ;\
+\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 User 
+\f2\i \cf3 loggedUser 
+\f1\i0 \cf0 = 
+\f0\b \cf2 null
+\f1\b0 \cf0 ;\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 Intent 
+\f2\i \cf3 intent 
+\f1\i0 \cf0 = 
+\f0\b \cf2 null
+\f1\b0 \cf0 ;\
+\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 String 
+\f2\i \cf3 username
+\f1\i0 \cf0 ;\
+    
+\f0\b \cf2 private static 
+\f1\b0 \cf0 String 
+\f2\i \cf3 password
+\f1\i0 \cf0 ;\
+\
+\
+    \cf5 @Override\
+    
+\f0\b \cf2 protected void 
+\f1\b0 \cf0 onCreate(Bundle savedInstanceState) \{\
+        
+\f0\b \cf2 super
+\f1\b0 \cf0 .onCreate(savedInstanceState);\
+        setContentView(R.layout.
+\f3\i\b \cf3 activity_main
+\f1\i0\b0 \cf0 );\
+\
+        
+\f2\i \cf3 loggedUser 
+\f1\i0 \cf0 = 
+\f0\b \cf2 null
+\f1\b0 \cf0 ;\
+        
+\f2\i \cf3 intent 
+\f1\i0 \cf0 = 
+\f0\b \cf2 null
+\f1\b0 \cf0 ;\
+        
+\f2\i \cf3 username
+\f1\i0 \cf0 = 
+\f0\b \cf2 null
+\f1\b0 \cf0 ;\
+        
+\f2\i \cf3 password 
+\f1\i0 \cf0 = 
+\f0\b \cf2 null
+\f1\b0 \cf0 ;\
+\
+\
+        
+\f0\b \cf3 _txtPass 
+\f1\b0 \cf0 = findViewById(R.id.
+\f3\i\b \cf3 txtPass
+\f1\i0\b0 \cf0 );\
+        
+\f0\b \cf3 _txtUser 
+\f1\b0 \cf0 = findViewById(R.id.
+\f3\i\b \cf3 txtUser
+\f1\i0\b0 \cf0 );\
+        
+\f0\b \cf3 _spinner 
+\f1\b0 \cf0 = findViewById(R.id.
+\f3\i\b \cf3 spinner
+\f1\i0\b0 \cf0 );\
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.
+\f2\i createFromResource
+\f1\i0 (
+\f0\b \cf2 this
+\f1\b0 \cf0 , R.array.
+\f3\i\b \cf3 usertype
+\f1\i0\b0 \cf0 , R.layout.
+\f3\i\b \cf3 support_simple_spinner_dropdown_item
+\f1\i0\b0 \cf0 );\
+        
+\f0\b \cf3 _spinner
+\f1\b0 \cf0 .setAdapter(adapter);\
+    \}\
+\
+    
+\f0\b \cf2 public void 
+\f1\b0 \cf0 login(View view)\{\
+\
+        
+\f0\b \cf2 if 
+\f1\b0 \cf0 (
+\f0\b \cf3 _txtUser
+\f1\b0 \cf0 .getText().toString().equals(
+\f0\b \cf4 "admin"
+\f1\b0 \cf0 )&& 
+\f0\b \cf3 _txtPass
+\f1\b0 \cf0 .getText().toString().equals(
+\f0\b \cf4 "5T5ptQ"
+\f1\b0 \cf0 )&& 
+\f0\b \cf3 _spinner
+\f1\b0 \cf0 .getSelectedItem().toString().equals(
+\f0\b \cf4 "administrateur"
+\f1\b0 \cf0 )) \{\
+            Intent intent = 
+\f0\b \cf2 new 
+\f1\b0 \cf0 Intent(MainActivity.
+\f0\b \cf2 this
+\f1\b0 \cf0 , Administrateur.
+\f0\b \cf2 class
+\f1\b0 \cf0 );\
+            startActivity(intent);\
+        \}\
+        
+\f2\i \cf6 /**else if (_txtUser.getText().toString().equals("employe")&& _txtPass.getText().toString().equals("employe")&& _spinner.getSelectedItem().toString().equals("employe")) \{\
+            Intent intent = new Intent(MainActivity.this, Employe.class);\
+            intent.putExtra("name", _txtUser.getText().toString());\
+            startActivity(intent);\
+        \}\
+        else if (_txtUser.getText().toString().equals("patient") && _txtPass.getText().toString().equals("patient") && _spinner.getSelectedItem().toString().equals("patient")) \{\
+            Intent intent = new Intent(MainActivity.this, Patient.class);\
+            intent.putExtra("name", _txtUser.getText().toString());\
+            startActivity(intent);\
+        \}*/\
+         
+\f0\i0\b \cf2 else 
+\f1\b0 \cf0 \{\
+            Toast.
+\f2\i makeText
+\f1\i0 (getApplicationContext(), 
+\f0\b \cf4 "Mot de passe ou nom d'utilisateur invalide"
+\f1\b0 \cf0 , Toast.
+\f3\i\b \cf3 LENGTH_LONG
+\f1\i0\b0 \cf0 ).show();\
+        \}\
+\
+        
+\f2\i \cf6 /**data.addListenerForSingleValueEvent(new ValueEventListener() \{\
+            
+\f3\b @Override\
+            
+\f2\b0 public void onDataChange(DataSnapshot dataSnapshot) \{\
+                for (DataSnapshot postSnap : dataSnapshot.getChildren())\{\
+\
+                \}\
+                    if (loggedUser!=null && username.equals(loggedUser.getUsername()) && password.equals(loggedUser.getPassword())) \{\
+                        intent = new Intent(thisContext, WelcomeActivity.class);\
+                        startActivity(intent);\
+                        break;\
+                    \}\
+                    else \{\
+                        intent = null;\
+                    \}\
+    \}*/\
+\
+   /** public void createAccount(View view) \{\
+        Intent intent = new Intent(MainActivity.this, CreateAccount.class);\
+        startActivity(intent);\
+    \}*/\
+    
+\f1\i0 \cf0 \}\
+\}\
+\
+\
+}

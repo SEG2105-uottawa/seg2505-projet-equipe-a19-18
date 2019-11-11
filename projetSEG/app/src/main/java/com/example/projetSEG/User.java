@@ -1,6 +1,7 @@
 package com.example.projetSEG;
 
 
+<<<<<<< HEAD
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
@@ -9,6 +10,23 @@ public class User {
     /**public String username;
     public String password;
     public String type;
+=======
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.sql.DatabaseMetaData;
+
+public class User {
+    public String password, username;
+>>>>>>> d89d2810e8280fbb549d8ceb0f92b367fd879435
 
     public User() {
 
@@ -41,6 +59,7 @@ public class User {
             this._courriel=null;
         }
 
+<<<<<<< HEAD
         public User(String username, String password, String nom, String prenom, String _courriel){
             this._username = username;
             this.prenom=null;
@@ -101,3 +120,6 @@ public class User {
         }
 
     }
+=======
+}
+>>>>>>> d89d2810e8280fbb549d8ceb0f92b367fd879435

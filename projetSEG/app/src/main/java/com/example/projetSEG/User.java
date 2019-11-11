@@ -1,16 +1,8 @@
 package com.example.projetSEG;
 
 
-<<<<<<< HEAD
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-
-public class User {
-
-    /**public String username;
-    public String password;
-    public String type;
-=======
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,22 +16,29 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.sql.DatabaseMetaData;
 
+
 public class User {
-    public String password, username;
->>>>>>> d89d2810e8280fbb549d8ceb0f92b367fd879435
+
+    public String username;
+    public String password;
+    public String type;
 
     public User() {
-
     }
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
-*/
+
+/**
+ public class User {
+    public String password, username;
 
 
-        protected String _username;
+
+
+       protected String _username;
         protected String password;
 
         protected String prenom, nom;
@@ -59,39 +58,25 @@ public class User {
             this._courriel=null;
         }
 
-<<<<<<< HEAD
         public User(String username, String password, String nom, String prenom, String _courriel){
             this._username = username;
             this.prenom=null;
             this.nom=null;
             this._courriel=null;
 
-            try {
-                    this.password = password;
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
         }
         public void setUsername(String username){
             this._username = username;
         }
         public void setPassword(String password){
-            try {
-                this.password = password;
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
+            this.password = password;
         }
         public void setFullName(String nom, String prenom){
             this.nom = nom;
             this.prenom = prenom;
         }
         public void setCourriel(String _courriel){
-            this._courriel = email;
+            this._courriel = _courriel;
         }
 
         //getter methods
@@ -118,8 +103,6 @@ public class User {
         public String stringInfo() {
             return _username+" "+password+" "+prenom+" "+nom+" "+_courriel;
         }
+       */
 
     }
-=======
-}
->>>>>>> d89d2810e8280fbb549d8ceb0f92b367fd879435

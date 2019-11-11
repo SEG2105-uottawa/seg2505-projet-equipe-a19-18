@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 
-public class Patient extends User {
+public class Patient extends MainActivity {
 
 
 

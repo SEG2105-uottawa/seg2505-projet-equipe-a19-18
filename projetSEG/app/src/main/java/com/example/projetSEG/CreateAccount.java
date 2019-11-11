@@ -36,7 +36,7 @@ public class CreateAccount extends AppCompatActivity {
         } else if(!(txtUser.getText().toString().equals(""))&&!(Mdp.getText().toString().equals(""))){
 
             User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
-            patient.push().setValue(user);
+            patient.push().setValue(txtUser);
 
             Intent intent = new Intent(CreateAccount.this, Patient.class);
             intent.putExtra("name", txtUser.getText().toString());
@@ -56,8 +56,8 @@ public class CreateAccount extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals("")&&!(Mdp.getText().toString().equals("")))){
 
-            User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
-            employe.push().setValue(user);
+            //User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
+            employe.push().setValue(txtUser);
 
             Intent intent = new Intent(CreateAccount.this, Employe.class);
             intent.putExtra("name", txtUser.getText().toString());

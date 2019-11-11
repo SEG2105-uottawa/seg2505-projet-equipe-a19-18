@@ -46,6 +46,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public getUsername(){
+
+    }
+
+    public getPassword(){
+
+    }
+
+    public String getUser(){
+        if(_spinner.getSelectedItem().toString().equals("administrateur")){
+            final String administrateur = "administrateur";
+            return administrateur;
+        }
+        final String patient = "patient";
+        if(_spinner.getSelectedItem().toString().equals(patient)){
+            return patient;
+        }
+        return "employe";
+
+    }
+
     public void createAccount(View view) {
         Intent intent = new Intent(MainActivity.this, CreateAccount.class);
         startActivity(intent);

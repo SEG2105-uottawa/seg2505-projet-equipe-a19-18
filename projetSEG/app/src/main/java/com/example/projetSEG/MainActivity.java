@@ -1,22 +1,19 @@
 package com.example.projetSEG;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Toast;
 import android.widget.Spinner;
-import android.content.Intent;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 
-import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -63,12 +60,15 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Mot de passe ou nom d'utilisateur invalide", Toast.LENGTH_LONG).show();
         }
     }
+    public void createAccount(View view) {
+        Intent intent = new Intent(MainActivity.this, CreateAccount.class);
+        startActivity(intent);
+    }
 }
-
 
        /** data.addListenerForSingleValueEvent(new ValueEventListener() {
 
-        @Override
+
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnap : dataSnapshot.getChildren()) {
                     if (loggedUser != null && username.equals(loggedUser.getUsername()) && password.equals(loggedUser.getPassword())) {
@@ -86,7 +86,4 @@ public class MainActivity extends AppCompatActivity {
         }
         );
 
-    public void createAccount(View view) {
-        Intent intent = new Intent(MainActivity.this, CreateAccount.class);
-        startActivity(intent);
-    }*/
+    */

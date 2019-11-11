@@ -1,12 +1,12 @@
 package com.example.projetSEG;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.view.View;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -36,7 +36,7 @@ public class CreateAccount extends AppCompatActivity {
         } else if(!(txtUser.getText().toString().equals(""))&&!(Mdp.getText().toString().equals(""))){
 
             User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
-            patient.push().setValue(txtUser);
+            patient.push().setValue(user);
 
             Intent intent = new Intent(CreateAccount.this, Patient.class);
             intent.putExtra("name", txtUser.getText().toString());
@@ -56,8 +56,8 @@ public class CreateAccount extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals("")&&!(Mdp.getText().toString().equals("")))){
 
-            //User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
-            employe.push().setValue(txtUser);
+            User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
+            employe.push().setValue(user);
 
             Intent intent = new Intent(CreateAccount.this, Employe.class);
             intent.putExtra("name", txtUser.getText().toString());

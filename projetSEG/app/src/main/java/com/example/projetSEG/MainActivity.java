@@ -12,11 +12,14 @@ import android.content.Intent;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference dataPatient = FirebaseDatabase.getInstance().getReference("Patient");
+    private DatabaseReference dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
+
 
     EditText _txtUser, _txtPass;
     Spinner _spinner;
@@ -35,19 +38,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view){
-
         if (_txtUser.getText().toString().equals("admin")&& _txtPass.getText().toString().equals("5T5ptQ")&& _spinner.getSelectedItem().toString().equals("administrateur")) {
             Intent intent = new Intent(MainActivity.this, Administrateur.class);
-            startActivity(intent);
-        }
-        else if (_txtUser.getText().toString().equals("employe")&& _txtPass.getText().toString().equals("employe")&& _spinner.getSelectedItem().toString().equals("employe")) {
-            Intent intent = new Intent(MainActivity.this, Employe.class);
-            intent.putExtra("name", _txtUser.getText().toString());
-            startActivity(intent);
-        }
-        else if (_txtUser.getText().toString().equals("patient") && _txtPass.getText().toString().equals("patient") && _spinner.getSelectedItem().toString().equals("patient")) {
-            Intent intent = new Intent(MainActivity.this, Patient.class);
-            intent.putExtra("name", _txtUser.getText().toString());
             startActivity(intent);
         } else {
             Toast.makeText(getApplicationContext(), "Mot de passe ou nom d'utilisateur invalide", Toast.LENGTH_LONG).show();

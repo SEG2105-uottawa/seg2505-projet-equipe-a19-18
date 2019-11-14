@@ -1,8 +1,6 @@
 package com.example.projetSEG;
 
-
-
-public class User {
+/**public class User {
 
     public String username;
     public String password;
@@ -11,21 +9,16 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-    }
+    }*/
 
-/**
  public class User {
-    public String password, username;
-
-
-
 
        protected String _username;
-        protected String password;
+       protected String password;
 
-        protected String prenom, nom;
+       protected String prenom, nom;
 
-        protected String _courriel;
+       protected String _courriel;
 
 
         public User() {
@@ -34,7 +27,6 @@ public class User {
             this._courriel=null;
         }
         public User(String nom, String prenom, String _courriel){
-
             this.prenom=null;
             this.nom=null;
             this._courriel=null;
@@ -77,7 +69,7 @@ public class User {
 
         public void printInfo(){
             System.out.println("Utilisateur: " + this._username);
-            System.out.println("Mot De PAsse: " + this.password);
+            System.out.println("Mot De Passe: " + this.password);
             System.out.println("Nom: " + this.prenom + " " + this.nom);
             System.out.println("Courriel: " + this._courriel);
         }
@@ -85,6 +77,5 @@ public class User {
         public String stringInfo() {
             return _username+" "+password+" "+prenom+" "+nom+" "+_courriel;
         }
-       */
 
     }

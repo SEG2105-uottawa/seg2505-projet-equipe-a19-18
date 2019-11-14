@@ -54,7 +54,7 @@ public class CreateAccount extends AppCompatActivity {
 
         if (!Mdp2.getText().toString().equals(Mdp.getText().toString())) {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
-        } else if(!(txtUser.getText().toString().equals("")&&!(Mdp.getText().toString().equals("")))){
+        } else if(!(txtUser.getText().toString().equals(""))&&!(Mdp.getText().toString().equals(""))){
 
             User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
             employe.push().setValue(user);
@@ -62,7 +62,6 @@ public class CreateAccount extends AppCompatActivity {
             Intent intent = new Intent(CreateAccount.this, Employe.class);
             intent.putExtra("name", txtUser.getText().toString());
             startActivity(intent);
-
         } else{
             Toast.makeText(getApplicationContext(), "Entrez un mot de passe et un nom d'utilisateur.", Toast.LENGTH_LONG).show();
         }

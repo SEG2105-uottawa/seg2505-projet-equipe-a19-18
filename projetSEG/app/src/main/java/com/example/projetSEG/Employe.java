@@ -130,25 +130,28 @@ public class Employe extends AppCompatActivity {
         TextView viewAssurance = findViewById(R.id.viewAssurance);
         EditText editPaiment = findViewById(R.id.editPaiment);
         TextView viewPaiment = findViewById(R.id.viewPaiment);
-
-
         cancel.setVisibility(View.GONE);
         accept.setVisibility(View.GONE);
         change.setVisibility(View.VISIBLE);
-
         editAdresse.setVisibility(View.GONE);
         viewAdresse.setVisibility(View.VISIBLE);
-
         editTel.setVisibility(View.GONE);
         viewTel.setVisibility(View.VISIBLE);
-
         editNom.setVisibility(View.GONE);
         viewNom.setVisibility(View.VISIBLE);
-
         editAssurance.setVisibility(View.GONE);
         viewAssurance.setVisibility(View.VISIBLE);
-
         editPaiment.setVisibility(View.GONE);
         viewPaiment.setVisibility(View.VISIBLE);
+
+    }
+
+    public void service(View view) {
+        Intent intent = new Intent(Employe.this, ClinicService.class);
+        startActivity(intent);
+    }
+    public void heure(View view) {
+        Intent intent = new Intent(Employe.this, ClinicHour.class);
+        startActivity(intent);
     }
 }

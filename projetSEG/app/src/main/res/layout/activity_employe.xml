@@ -231,30 +231,32 @@
             android:id="@+id/btnSeeServices"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Voir les services offerts"
             android:layout_marginLeft="45dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="45dp"
             android:layout_marginBottom="15dp"
             android:background="@color/colorPrimary"
             android:fontFamily="casual"
+            android:onClick="service"
+            android:paddingTop="5dp"
+            android:text="Voir les services offerts"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:paddingTop="5dp"/>
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnSeeHours"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Voir les heures d'ouverture"
             android:layout_marginLeft="45dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="45dp"
             android:layout_marginBottom="15dp"
             android:background="@color/colorPrimary"
             android:fontFamily="casual"
+            android:onClick="heure"
+            android:text="Voir les heures d'ouverture"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

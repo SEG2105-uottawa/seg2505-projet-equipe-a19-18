@@ -93,7 +93,6 @@
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <EditText
@@ -105,7 +104,6 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="Name"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:visibility="gone" />
 
@@ -125,7 +123,6 @@
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <EditText
@@ -137,7 +134,6 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="Name"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:visibility="gone" />
 
@@ -157,7 +153,6 @@
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <EditText
@@ -169,7 +164,6 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="Name"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:visibility="gone" />
 
@@ -189,7 +183,6 @@
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <EditText
@@ -201,7 +194,6 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="Name"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:visibility="gone" />
 
@@ -221,7 +213,6 @@
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <EditText
@@ -233,7 +224,6 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="Name"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:visibility="gone" />
 

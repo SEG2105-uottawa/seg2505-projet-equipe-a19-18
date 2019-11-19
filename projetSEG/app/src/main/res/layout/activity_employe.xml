@@ -15,9 +15,8 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="77dp"
+            android:layout_height="30dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
             app:srcCompat="@drawable/unnamed" />
 
 
@@ -28,76 +27,215 @@
             android:padding="15dp"
             android:text="Bienvenue Employé! Vous êtes connecté en tant qu'employé"
             android:textColor="#000000"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/btnChange"
-            android:layout_width="250dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="@color/colorPrimary"
-            android:text="Modifier les informations"
-            android:textColor="#FFFFFF" />
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:onClick="accept"
+                android:text="Accepter les changements"
+                android:textColor="#000000"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:onClick="cancel"
+                android:text="Annuler les changements"
+                android:textColor="#000000"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnChange"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@color/colorPrimary"
+                android:onClick="change"
+                android:paddingBottom="5dp"
+                android:text="Modifier les informations"
+                android:textColor="#FFFFFF"
+                android:visibility="visible" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textAdresse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Adresse :"
             android:paddingLeft="20dp"
-            android:paddingTop="5dp"
             android:paddingRight="20dp"
-            android:paddingBottom="5dp"
+            android:text="Adresse :"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/viewAdresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editAdresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textTel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Téléphone :"
             android:paddingLeft="20dp"
-            android:paddingTop="5dp"
             android:paddingRight="20dp"
-            android:paddingBottom="5dp"
+            android:text="Téléphone :"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/viewTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nom de la clinique :"
             android:paddingLeft="20dp"
-            android:paddingTop="5dp"
             android:paddingRight="20dp"
-            android:paddingBottom="5dp"
+            android:text="Nom de la clinique :"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/viewNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textAssurance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type d'assurance :"
             android:paddingLeft="20dp"
-            android:paddingTop="5dp"
             android:paddingRight="20dp"
-            android:paddingBottom="5dp"
+            android:text="Type d'assurance :"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/viewAssurance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editAssurance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textPaiment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
-            android:paddingTop="5dp"
             android:paddingRight="20dp"
-            android:paddingBottom="5dp"
             android:text="Méthode de paiment :"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/viewPaiment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editPaiment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btnSeeServices"
@@ -111,7 +249,8 @@
             android:background="@color/colorPrimary"
             android:fontFamily="casual"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:paddingTop="5dp"/>
 
         <Button
             android:id="@+id/btnSeeHours"

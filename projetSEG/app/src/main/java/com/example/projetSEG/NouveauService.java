@@ -33,9 +33,6 @@ public class NouveauService<adapter2> extends AppCompatActivity {
     }
 
     public void Creation (View view) {
-
-
-
         if (description.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Veuillez donner une description", Toast.LENGTH_LONG).show();
         } else if (spinner.getSelectedItem().toString().equals("")) {

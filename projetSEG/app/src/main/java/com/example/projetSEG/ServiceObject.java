@@ -2,32 +2,27 @@ package com.example.projetSEG;
 
 public class ServiceObject {
 
-    private Integer id;
+    private String id;
     private String service;
-    private String role;
+   // private String role;
 
     public ServiceObject() {
     }
 
-    public ServiceObject(Integer id, String service,String role ) {
+    public ServiceObject(String id, String service ) {
         this.id = id;
         this.service = service;
-        this.role = role;
+       //this.role = role;
     }
 
-    public void setRole(String role){
-        this.role=role;
-    }
+    //public void setRole(String role){
+      //  this.role=role;
+    //}
 
-    public String getRole(){
-        return this.role;
-    }
+    //public String getRole(){ return this.role; }
+    public void setId(String id) { this.id = id; }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getID() {
+    public String getID() {
         return this.id;
     }
 

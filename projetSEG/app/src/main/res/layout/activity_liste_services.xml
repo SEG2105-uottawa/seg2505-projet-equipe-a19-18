@@ -60,7 +60,8 @@
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/btnSupprimer"
@@ -75,7 +76,8 @@
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/btnAjouter"
@@ -91,7 +93,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:visibility="gone" />
+                android:visibility="invisible" />
 
         </LinearLayout>
 

@@ -34,9 +34,10 @@ package com.example.projetSEG;
 
         public User(String username, String password, String nom, String prenom, String _courriel){
             this._username = username;
-            this.prenom=null;
-            this.nom=null;
-            this._courriel=null;
+            this.prenom=prenom;
+            this.nom=nom;
+            this._courriel=_courriel;
+            this.password = password;
 
         }
         public void setUsername(String username){

@@ -16,6 +16,7 @@ public class ClinicService extends AppCompatActivity {
 
     public void ajout(View view) {
         Intent intent = new Intent(ClinicService.this, ListeServices.class);
+        intent.putExtra("fromEmploye", "true");
         startActivity(intent);
     }
 }

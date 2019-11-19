@@ -55,6 +55,9 @@ public class CreateAccount extends AppCompatActivity {
         Mdp = findViewById(R.id.txtMdp);
         Mdp2 = findViewById(R.id.txtMdp2);
         txtUser = findViewById(R.id.txtUser);
+        prenom = findViewById(R.id.txtPrenom);
+        nom = findViewById(R.id.txtNom);
+        courriel = findViewById(R.id.txtEmail);
 
         if (!Mdp2.getText().toString().equals(Mdp.getText().toString())) {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();

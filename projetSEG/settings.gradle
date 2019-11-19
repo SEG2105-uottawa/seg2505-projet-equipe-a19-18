@@ -1,2 +1,4 @@
-include ':app'
+include ':app', ':sample', ':AndroidBootstrap'
 rootProject.name='projetSEG'
+project(':sample').projectDir = new File('Android-Bootstrap-master/sample')
+project(':AndroidBootstrap').projectDir = new File('Android-Bootstrap-master/AndroidBootstrap')

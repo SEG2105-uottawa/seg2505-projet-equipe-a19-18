@@ -63,6 +63,7 @@ public class CreateAccount extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals(""))&&!(Mdp.getText().toString().equals(""))){
 
+
             User user = new User(txtUser.getText().toString(), Mdp.getText().toString(),
                     nom.getText().toString(), prenom.getText().toString(), courriel.getText().toString());
             employe.push().setValue(user);

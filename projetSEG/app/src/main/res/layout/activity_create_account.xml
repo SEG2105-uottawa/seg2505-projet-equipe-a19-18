@@ -42,7 +42,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:hint="Entrer votre prenom"
-                android:inputType="text" />
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/txtNom"
@@ -51,7 +51,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:hint="Entrer votre nom"
-                android:inputType="text" />
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/txtEmail"

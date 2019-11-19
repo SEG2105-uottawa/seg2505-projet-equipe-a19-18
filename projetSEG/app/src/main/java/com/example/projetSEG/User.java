@@ -13,35 +13,38 @@ package com.example.projetSEG;
 
  public class User {
 
-       protected String _username;
-       protected String password;
+        public String username;
+        public String password;
 
-       protected String prenom, nom;
+        public String prenom, nom;
 
-       protected String _courriel;
+        public String courriel;
 
-
+        /*
         public User() {
             this.prenom=null;
             this.nom=null;
-            this._courriel=null;
+            this.courriel=null;
         }
         public User(String nom, String prenom, String _courriel){
             this.prenom=null;
             this.nom=null;
-            this._courriel=null;
+            this.courriel=null;
         }
 
-        public User(String username, String password, String nom, String prenom, String _courriel){
-            this._username = username;
-            this.prenom=prenom;
-            this.nom=nom;
-            this._courriel=_courriel;
+         */
+
+        public User(String username, String password, String nom, String prenom, String courriel){
+            this.username = username;
             this.password = password;
+            this.nom=nom;
+            this.prenom=prenom;
+            this.courriel=courriel;
+
 
         }
         public void setUsername(String username){
-            this._username = username;
+            this.username = username;
         }
         public void setPassword(String password){
             this.password = password;
@@ -51,12 +54,12 @@ package com.example.projetSEG;
             this.prenom = prenom;
         }
         public void setCourriel(String _courriel){
-            this._courriel = _courriel;
+            this.courriel = _courriel;
         }
 
         //getter methods
         public String getUsername(){
-            return this._username;
+            return this.username;
         }
         public String getPassword(){
             return this.password;
@@ -65,18 +68,18 @@ package com.example.projetSEG;
             return this.nom;
         }
         public String getPrenom(){
-            return this._courriel;
+            return this.courriel;
         }
 
         public void printInfo(){
-            System.out.println("Utilisateur: " + this._username);
+            System.out.println("Utilisateur: " + this.username);
             System.out.println("Mot De Passe: " + this.password);
             System.out.println("Nom: " + this.prenom + " " + this.nom);
-            System.out.println("Courriel: " + this._courriel);
+            System.out.println("Courriel: " + this.courriel);
         }
 
         public String stringInfo() {
-            return _username+" "+password+" "+prenom+" "+nom+" "+_courriel;
+            return username+" "+password+" "+prenom+" "+nom+" "+courriel;
         }
 
     }

@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateAccount extends AppCompatActivity {
 
-    EditText Mdp, Mdp2 , txtUser;
+    EditText Mdp, Mdp2 , txtUser, prenom, nom, courriel;
     private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference patient = data.child("Patient");
     private DatabaseReference employe = data.child("Employe");
@@ -30,12 +30,16 @@ public class CreateAccount extends AppCompatActivity {
         Mdp = findViewById(R.id.txtMdp);
         Mdp2 = findViewById(R.id.txtMdp2);
         txtUser = findViewById(R.id.txtUser);
+        prenom = findViewById(R.id.txtPrenom);
+        nom = findViewById(R.id.txtNom);
+        courriel = findViewById(R.id.txtEmail);
 
         if (!Mdp2.getText().toString().equals(Mdp.getText().toString())) {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals(""))&&!(Mdp.getText().toString().equals(""))){
 
-            User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
+            User user = new User(txtUser.getText().toString(), Mdp.getText().toString(),
+                    nom.getText().toString(), prenom.getText().toString(), courriel.getText().toString());
             patient.push().setValue(user);
 
             Intent intent = new Intent(CreateAccount.this, Patient.class);
@@ -56,7 +60,8 @@ public class CreateAccount extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals(""))&&!(Mdp.getText().toString().equals(""))){
 
-            User user = new User(txtUser.getText().toString(), Mdp.getText().toString());
+            User user = new User(txtUser.getText().toString(), Mdp.getText().toString(),
+                    nom.getText().toString(), prenom.getText().toString(), courriel.getText().toString());
             employe.push().setValue(user);
 
             Intent intent = new Intent(CreateAccount.this, Employe.class);

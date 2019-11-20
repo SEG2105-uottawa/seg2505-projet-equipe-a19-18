@@ -234,7 +234,7 @@
             android:layout_marginLeft="45dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="45dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
             android:background="@color/colorPrimary"
             android:fontFamily="casual"
             android:onClick="service"
@@ -248,15 +248,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="45dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="45dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
             android:background="@color/colorPrimary"
             android:fontFamily="casual"
             android:onClick="heure"
             android:text="Voir les heures d'ouverture"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnSeeShifts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="casual"
+            android:onClick="shifts"
+            android:text="Voir mes heures de travail"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

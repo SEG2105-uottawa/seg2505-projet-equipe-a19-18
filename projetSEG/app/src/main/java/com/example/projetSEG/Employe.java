@@ -178,4 +178,8 @@ public class Employe extends AppCompatActivity {
         Intent intent = new Intent(Employe.this, ClinicHour.class);
         startActivity(intent);
     }
+    public void shifts(View view) {
+        Intent intent = new Intent(Employe.this, Shifts.class);
+        startActivity(intent);
+    }
 }

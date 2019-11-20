@@ -129,6 +129,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
+            if (connect == false) {
+                Toast.makeText(getApplicationContext(), "Mot de passe ou nom d'utilisateur invalide", Toast.LENGTH_LONG).show();
+            }
         } else if (type.equals("patient")) {
             for (int i = 0; i < patientList.size(); i++) {
                 user = patientList.get(i);
@@ -138,6 +141,9 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("name", _txtUser.getText().toString());
                     startActivity(intent);
                 }
+            }
+            if (connect == false) {
+                Toast.makeText(getApplicationContext(), "Mot de passe ou nom d'utilisateur invalide", Toast.LENGTH_LONG).show();
             }
         } else if (connect == false) {
             Toast.makeText(getApplicationContext(), "Mot de passe ou nom d'utilisateur invalide", Toast.LENGTH_LONG).show();

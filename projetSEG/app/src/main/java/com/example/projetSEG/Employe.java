@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Employe extends AppCompatActivity {
 
@@ -71,6 +72,7 @@ public class Employe extends AppCompatActivity {
     }
 
     public void accept(View view) {
+
         Button cancel = findViewById(R.id.btnCancel);
         Button accept = findViewById(R.id.btnAccept);
         Button change = findViewById(R.id.btnChange);
@@ -85,35 +87,57 @@ public class Employe extends AppCompatActivity {
         EditText editPaiment = findViewById(R.id.editPaiment);
         TextView viewPaiment = findViewById(R.id.viewPaiment);
 
+        //PHONE is a number
+        Boolean isNumber;
+        try {
+            Double.parseDouble(editTel.getText().toString());
+            isNumber = true;
+        } catch(NumberFormatException e){
+            isNumber = false;
+        }
 
-        cancel.setVisibility(View.GONE);
-        accept.setVisibility(View.GONE);
-        change.setVisibility(View.VISIBLE);
 
-        String adresse = editAdresse.getText().toString();
-        viewAdresse.setText(adresse);
-        editAdresse.setVisibility(View.GONE);
-        viewAdresse.setVisibility(View.VISIBLE);
+        if (editAdresse.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Entrez une adresse", Toast.LENGTH_LONG).show();
+        } else if (editTel.getText().toString().equals("") || !isNumber) {
+            Toast.makeText(getApplicationContext(), "Entrez un téléphone valide", Toast.LENGTH_LONG).show();
+        } else if (editNom.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Entrez un nom de clinique", Toast.LENGTH_LONG).show();
+        }else if (editAssurance.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Entrez un type d'assurance", Toast.LENGTH_LONG).show();
+        }else if (editPaiment.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Entrez une méthode de paiment", Toast.LENGTH_LONG).show();
+        }else {
 
-        String tel = editTel.getText().toString();
-        viewTel.setText(tel);
-        editTel.setVisibility(View.GONE);
-        viewTel.setVisibility(View.VISIBLE);
+            cancel.setVisibility(View.GONE);
+            accept.setVisibility(View.GONE);
+            change.setVisibility(View.VISIBLE);
 
-        String nom = editNom.getText().toString();
-        viewNom.setText(nom);
-        editNom.setVisibility(View.GONE);
-        viewNom.setVisibility(View.VISIBLE);
+            String adresse = editAdresse.getText().toString();
+            viewAdresse.setText(adresse);
+            editAdresse.setVisibility(View.GONE);
+            viewAdresse.setVisibility(View.VISIBLE);
 
-        String assurance = editAssurance.getText().toString();
-        viewAssurance.setText(assurance);
-        editAssurance.setVisibility(View.GONE);
-        viewAssurance.setVisibility(View.VISIBLE);
+            String tel = editTel.getText().toString();
+            viewTel.setText(tel);
+            editTel.setVisibility(View.GONE);
+            viewTel.setVisibility(View.VISIBLE);
 
-        String paiment = editPaiment.getText().toString();
-        viewPaiment.setText(paiment);
-        editPaiment.setVisibility(View.GONE);
-        viewPaiment.setVisibility(View.VISIBLE);
+            String nom = editNom.getText().toString();
+            viewNom.setText(nom);
+            editNom.setVisibility(View.GONE);
+            viewNom.setVisibility(View.VISIBLE);
+
+            String assurance = editAssurance.getText().toString();
+            viewAssurance.setText(assurance);
+            editAssurance.setVisibility(View.GONE);
+            viewAssurance.setVisibility(View.VISIBLE);
+
+            String paiment = editPaiment.getText().toString();
+            viewPaiment.setText(paiment);
+            editPaiment.setVisibility(View.GONE);
+            viewPaiment.setVisibility(View.VISIBLE);
+        }
     }
 
     public void cancel(View view) {

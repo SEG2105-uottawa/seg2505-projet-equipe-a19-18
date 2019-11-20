@@ -33,4 +33,8 @@ public class ServiceObject {
     public void setService(String service) {
         this.service = service;
     }
+
+    public String toString(){
+        return (this.id+" EFFECTUÉ PAR : "+this.service);
+    }
 }

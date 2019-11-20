@@ -113,34 +113,37 @@ public class MainActivity extends AppCompatActivity {
         String username = _txtUser.getText().toString();
         String password = _txtPass.getText().toString();
         String type = _spinner.getSelectedItem().toString();
+        Boolean connect = false;
 
         if (type.equals("administrateur") && username.equals("admin") && password.equals("5T5ptQ")) {
+            connect = true;
             Intent intent = new Intent(MainActivity.this, Administrateur.class);
             startActivity(intent);
         } else if (type.equals("employe")) {
             for (int i = 0; i < employeList.size(); i++) {
                 user = employeList.get(i);
                 if (username.equals(user.username) && password.equals(user.password)) {
+                    connect = true;
                     Intent intent = new Intent(MainActivity.this, Employe.class);
                     intent.putExtra("name", _txtUser.getText().toString());
                     startActivity(intent);
                 }
             }
-            Toast.makeText(getApplicationContext(), "Mot de passe ou nom d'utilisateur invalide", Toast.LENGTH_LONG).show();
         } else if (type.equals("patient")) {
             for (int i = 0; i < patientList.size(); i++) {
                 user = patientList.get(i);
                 if (username.equals(user.username) && password.equals(user.password)) {
+                    connect = true;
                     Intent intent = new Intent(MainActivity.this, Patient.class);
                     intent.putExtra("name", _txtUser.getText().toString());
                     startActivity(intent);
                 }
             }
-            Toast.makeText(getApplicationContext(), "Mot de passe ou nom d'utilisateur invalide", Toast.LENGTH_LONG).show();
-        } else {
+        } else if (connect == false) {
             Toast.makeText(getApplicationContext(), "Mot de passe ou nom d'utilisateur invalide", Toast.LENGTH_LONG).show();
         }
     }
+
 
     public static String encrypt(String myPassword) {
         try {

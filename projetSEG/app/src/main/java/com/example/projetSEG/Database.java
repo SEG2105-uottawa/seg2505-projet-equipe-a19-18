@@ -18,7 +18,7 @@ public class Database {
 
     public void addUser(User newUser) { //Database functionality for adding a user to the database
         databaseUser = FirebaseDatabase.getInstance().getReference();
-        databaseUser.child("users").child(newUser.getUsername()).setValue(newUser);
+        //databaseUser.child("users").child(newUser.getUsername()).setValue(newUser);
     }
 
 
@@ -34,11 +34,11 @@ public class Database {
                     User user = postSnap.getValue(User.class);
 
 
-                    if (user.getUsername().equals(sentusername)) {
-                        Log.w(TAG, "GOT USER SUCCESSFUL");
-                        globalUser=user;
-                        break;
-                    }
+                    //if (user.getUsername().equals(sentusername)) {
+                      //  Log.w(TAG, "GOT USER SUCCESSFUL");
+                     //   globalUser=user;
+                      //  break;
+                    //}
                 }
             }
             @Override

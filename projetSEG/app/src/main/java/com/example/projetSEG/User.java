@@ -58,6 +58,7 @@ package com.example.projetSEG;
         }
 
         //getter methods
+    /*
         public String getUsername(){
             return this.username;
         }
@@ -77,7 +78,7 @@ package com.example.projetSEG;
             System.out.println("Nom: " + this.prenom + " " + this.nom);
             System.out.println("Courriel: " + this.courriel);
         }
-
+*/
         public String stringInfo() {
             return username+" "+password+" "+prenom+" "+nom+" "+courriel;
         }

@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     connect = true;
                     Intent intent = new Intent(MainActivity.this, Employe.class);
                     intent.putExtra("name", _txtUser.getText().toString());
+                    
                     startActivity(intent);
                 }
             }

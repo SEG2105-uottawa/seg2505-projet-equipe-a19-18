@@ -1,16 +1,30 @@
 package com.example.projetSEG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ListeServices extends AppCompatActivity {
 
     Button modifier, supprimer, ajouter;
+
+    DatabaseReference dataService;
+    ArrayList<ServiceObject> serviceList;
+
+    String id, service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +34,6 @@ public class ListeServices extends AppCompatActivity {
         modifier = findViewById(R.id.btnModifier);
         supprimer = findViewById(R.id.btnSupprimer);
         ajouter = findViewById(R.id.btnAjouter);
-
 
         Intent intent = getIntent();
         String fromEmploye = intent.getStringExtra("fromEmploye");
@@ -36,7 +49,34 @@ public class ListeServices extends AppCompatActivity {
         }
 
 
+        dataService = FirebaseDatabase.getInstance().getReference("Service");
+        serviceList = new ArrayList<>();
 
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        dataService.addValueEventListener((new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                serviceList.clear();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Object infoRaw = postSnapshot.getValue();
+                    HashMap info = (HashMap) infoRaw;
+
+                    id = (String) info.get("id");
+                    service = (String) info.get("service");
+
+                    ServiceObject serviceObject = new ServiceObject(id, service);
+                    serviceList.add(serviceObject);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        }));
     }
 }

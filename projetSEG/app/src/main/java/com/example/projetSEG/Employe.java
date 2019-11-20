@@ -45,6 +45,9 @@ public class Employe extends AppCompatActivity {
 
         dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
         list = new HashMap<>();
+
+
+
     }
 
     @Override
@@ -59,10 +62,23 @@ public class Employe extends AppCompatActivity {
                     key = postSnapshot.getKey();
                     HashMap info = (HashMap) infoRaw;
                     username = (String) info.get("username");
-
+                    HashMap clinic = (HashMap) info.get("clinique");
 
                     list.put(key,username);
 
+                    TextView viewAdresse = findViewById(R.id.viewAdresse);
+                    TextView viewTel = findViewById(R.id.viewTel);
+                    TextView viewNom = findViewById(R.id.viewNom);
+                    TextView viewAssurance = findViewById(R.id.viewAssurance);
+                    TextView viewPaiment = findViewById(R.id.viewPaiment);
+
+                    if (nameOfUser.equals(username)) {
+                        viewAdresse.setText(clinic.get("adresse").toString());
+                        viewTel.setText(clinic.get("telephone").toString());
+                        viewNom.setText(clinic.get("nom").toString());
+                        viewAssurance.setText(clinic.get("assurance").toString());
+                        viewPaiment.setText(clinic.get("paiment").toString());
+                    }
 
                 }
             }
@@ -71,6 +87,8 @@ public class Employe extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         }));
+
+
     }
 
     public void change(View view) {

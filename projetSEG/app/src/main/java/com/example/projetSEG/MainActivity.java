@@ -8,26 +8,42 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseReference data = FirebaseDatabase.getInstance().getReference("users");
+    //private DatabaseReference data = FirebaseDatabase.getInstance().getReference("users");
     //private static final String TAG = "EmailPassword";
     //private FirebaseAuth mAuth;
-    private DatabaseReference dataPatient = FirebaseDatabase.getInstance().getReference("Patient");
-    private DatabaseReference dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
+    //private DatabaseReference dataPatient = FirebaseDatabase.getInstance().getReference("Patient");
+    //private DatabaseReference dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
 
-    private FirebaseAuth firebaseAuth;
+    //private FirebaseAuth firebaseAuth;
+
+    DatabaseReference data;
 
     EditText _txtUser, _txtPass;
     Spinner _spinner;
+
+    ArrayList<User> userList;
+
+    String username;
+    String password;
+    String prenom, nom;
+    String courriel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +56,59 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.usertype, R.layout.support_simple_spinner_dropdown_item);
         _spinner.setAdapter(adapter);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-
+        //firebaseAuth = FirebaseAuth.getInstance();
         //mAuth = FirebaseAuth.getInstance();
         //findViewById(R.id.btnLogin).setOnClickListener((View.OnClickListener) this);
+
+        data = FirebaseDatabase.getInstance().getReference("Patient");
+        userList = new ArrayList<>();
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        data.addValueEventListener((new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userList.clear();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Object infoRaw = postSnapshot.getValue();
+                    HashMap info = (HashMap) infoRaw;
+                    password = (String) info.get("password");
+                    username = (String) info.get("username");
+                    nom = (String) info.get("nom");
+                    prenom = (String) info.get("prenom");
+                    courriel = (String) info.get("courriel");
+
+                    User user = new User(username, password, nom, prenom, courriel);
+                    userList.add(user);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        }));
     }
 
     public void login(View view) {
+
+        User user;
+        String username =_txtUser.getText().toString();
+        String password =_txtPass.getText().toString();
+        Boolean log = false;
+
+        for (int i = 0; i < userList.size(); i++) {
+            user = userList.get(i);
+            if (username.equals(user.username) && password.equals(user.password)) {
+                log = true;
+            }
+        }
+
+
         if (_txtUser.getText().toString().equals("admin") && _txtPass.getText().toString().equals("5T5ptQ") && _spinner.getSelectedItem().toString().equals("administrateur")) {
             Intent intent = new Intent(MainActivity.this, Administrateur.class);
             startActivity(intent);
@@ -54,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, Employe.class);
             intent.putExtra("name", _txtUser.getText().toString());
             startActivity(intent);
-        } else if (_txtUser.getText().toString().equals("patient") && _txtPass.getText().toString().equals("patient") && _spinner.getSelectedItem().toString().equals("patient")) {
+        } else if (log && _spinner.getSelectedItem().toString().equals("patient")) {
             Intent intent = new Intent(MainActivity.this, Patient.class);
             intent.putExtra("name", _txtUser.getText().toString());
             startActivity(intent);

@@ -58,6 +58,7 @@ public class ListeServices extends AppCompatActivity {
         list = findViewById(R.id.listViewService);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,array);
         list.setAdapter(adapter);
+
         dataService.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {

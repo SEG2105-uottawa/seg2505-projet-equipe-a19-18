@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -34,6 +35,8 @@ public class ClinicService extends AppCompatActivity {
     ArrayAdapter<String> adapter;
 
     int selectedItem = -1;
+
+    ArrayList<String> keyList = new ArrayList<>();
 
 
     @Override
@@ -63,18 +66,23 @@ public class ClinicService extends AppCompatActivity {
         data.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
                 String value = dataSnapshot.getValue(ServiceObject.class).toString();
                 array.add(value);
                 adapter.notifyDataSetChanged();
-
+                keyList.add(dataSnapshot.getKey());
 
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                adapter.notifyDataSetChanged();
+
             }
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                adapter.notifyDataSetChanged();
+
             }
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -95,5 +103,21 @@ public class ClinicService extends AppCompatActivity {
         extras.putString("id",id);
         intent.putExtras(extras);
         startActivity(intent);
+    }
+
+    public void supprime(View view) {
+
+        if (selectedItem == -1) {
+            Toast.makeText(getApplicationContext(), "Choisir un service", Toast.LENGTH_LONG).show();
+        } else {
+
+            String serviceID = keyList.get(selectedItem);
+            data.child(serviceID).setValue(null);
+            array.remove(selectedItem);
+            keyList.remove(selectedItem);
+
+
+        }
+
     }
 }

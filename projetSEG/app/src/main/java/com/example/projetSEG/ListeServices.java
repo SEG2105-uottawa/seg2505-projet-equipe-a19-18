@@ -116,6 +116,7 @@ public class ListeServices extends AppCompatActivity {
             dataEmploye.child(id).child("clinique").child("service").push().setValue(object);
 
             Intent intent = new Intent(ListeServices.this, ClinicService.class);
+            intent.putExtra("id", id);
             startActivity(intent);
         }
 

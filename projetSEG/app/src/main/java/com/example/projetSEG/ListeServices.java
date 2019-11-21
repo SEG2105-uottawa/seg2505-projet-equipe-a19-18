@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -58,6 +59,14 @@ public class ListeServices extends AppCompatActivity {
         list = findViewById(R.id.listViewService);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,array);
         list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                view.setSelected(true);
+            }
+        });
+
+
 
         dataService.addChildEventListener(new ChildEventListener() {
             @Override

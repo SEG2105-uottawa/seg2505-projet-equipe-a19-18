@@ -43,7 +43,9 @@
         <ListView
             android:id="@+id/listViewService"
             android:layout_width="match_parent"
-            android:layout_height="300dp" >
+            android:layout_height="300dp"
+            android:background="@drawable/my_selecter"
+            android:choiceMode="singleChoice">
 
         </ListView>
 

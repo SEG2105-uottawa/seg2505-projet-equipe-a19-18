@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +21,7 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+//PAGE DE LOGIN
 public class MainActivity extends AppCompatActivity {
 
     DatabaseReference dataPatient, dataEmploye;
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         employeList = new ArrayList<>();
     }
 
-
+    //LIRE FIREBASE POUR AVOIR LA LISTE DE PATIENT ET D EMPLOYE
     @Override
     protected void onStart() {
         super.onStart();
@@ -107,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         }));
     }
 
+    //VERIFICATION POUR UN LOGIN ACCEPTER
     public void login(View view) {
 
         User user;
@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         String password = _txtPass.getText().toString();
         String type = _spinner.getSelectedItem().toString();
         Boolean connect = false;
+
 
         if (type.equals("administrateur") && username.equals("admin") && password.equals("5T5ptQ")) {
             connect = true;

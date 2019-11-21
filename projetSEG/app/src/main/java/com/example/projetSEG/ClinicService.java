@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+//PAGE POUR PRESENTER LES SERVICE OFFERT DE LA CLINIQUE
 public class ClinicService extends AppCompatActivity {
 
     @Override

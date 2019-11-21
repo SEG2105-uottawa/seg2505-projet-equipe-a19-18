@@ -13,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class NouveauService<adapter2> extends AppCompatActivity {
+//PAGE POUR CREER UN NOUVEAU SERVICE (ADMIN)
+public class NouveauService extends AppCompatActivity {
 
     private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference service = data.child("Service");
@@ -32,6 +33,7 @@ public class NouveauService<adapter2> extends AppCompatActivity {
         description = findViewById(R.id.description);
     }
 
+    //CREER SERVICE FIREBASE
     public void Creation (View view) {
         if (description.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Veuillez donner une description", Toast.LENGTH_LONG).show();

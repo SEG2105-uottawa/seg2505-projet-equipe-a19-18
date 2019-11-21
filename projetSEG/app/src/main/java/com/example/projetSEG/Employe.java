@@ -17,19 +17,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+
+//PAGE POUR UN EMPLOYE
 public class Employe extends AppCompatActivity {
 
     DatabaseReference dataEmploye;
     HashMap<String,String> list;
 
+    //USER NAME CONNECTED
     String nameOfUser;
 
+    //USER INFO
     String key, username;
 
     @Override
@@ -42,14 +45,12 @@ public class Employe extends AppCompatActivity {
         nameOfUser = intent.getStringExtra("name");
         title.setText("Bienvenue " +nameOfUser+ "! Vous êtes connecté en tant qu'employé");
 
-
         dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
         list = new HashMap<>();
 
-
-
     }
 
+    //LIRE DATABASE
     @Override
     protected void onStart() {
         super.onStart();
@@ -58,20 +59,20 @@ public class Employe extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //GET INFO DATABASE
                     Object infoRaw = postSnapshot.getValue();
                     key = postSnapshot.getKey();
                     HashMap info = (HashMap) infoRaw;
                     username = (String) info.get("username");
-                    HashMap clinic = (HashMap) info.get("clinique");
-
                     list.put(key,username);
 
+                    //SET VIEW INFORMATION
+                    HashMap clinic = (HashMap) info.get("clinique");
                     TextView viewAdresse = findViewById(R.id.viewAdresse);
                     TextView viewTel = findViewById(R.id.viewTel);
                     TextView viewNom = findViewById(R.id.viewNom);
                     TextView viewAssurance = findViewById(R.id.viewAssurance);
                     TextView viewPaiment = findViewById(R.id.viewPaiment);
-
                     if (nameOfUser.equals(username)) {
                         viewAdresse.setText(clinic.get("adresse").toString());
                         viewTel.setText(clinic.get("telephone").toString());
@@ -91,6 +92,7 @@ public class Employe extends AppCompatActivity {
 
     }
 
+    //METHODE POUR APPLIQUER LA POSSIBILITE DE MODIFIER LES INFORMATIONS DE LA CLINIQUE
     public void change(View view) {
         Button cancel = findViewById(R.id.btnCancel);
         Button accept = findViewById(R.id.btnAccept);
@@ -137,6 +139,7 @@ public class Employe extends AppCompatActivity {
         viewPaiment.setVisibility(View.GONE);
     }
 
+    //METHODE POUR ACCEPTER LE CHANGEMENT DINFORMATION DE LA CLINIQUE
     public void accept(View view) {
 
         Button cancel = findViewById(R.id.btnCancel);
@@ -161,8 +164,7 @@ public class Employe extends AppCompatActivity {
         } catch(NumberFormatException e){
             isNumber = false;
         }
-
-
+        //INPUT VERIFICATION
         if (editAdresse.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Entrez une adresse", Toast.LENGTH_LONG).show();
         } else if (editTel.getText().toString().equals("") || !isNumber) {
@@ -174,7 +176,7 @@ public class Employe extends AppCompatActivity {
         }else if (editPaiment.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Entrez une méthode de paiment", Toast.LENGTH_LONG).show();
         }else {
-
+        //IS ACCEPTED
             cancel.setVisibility(View.GONE);
             accept.setVisibility(View.GONE);
             change.setVisibility(View.VISIBLE);
@@ -204,7 +206,7 @@ public class Employe extends AppCompatActivity {
             editPaiment.setVisibility(View.GONE);
             viewPaiment.setVisibility(View.VISIBLE);
 
-
+            //UPDATE FIREBASE
             Set set = list.entrySet();
             Iterator iterator = set.iterator();
             while(iterator.hasNext()) {
@@ -214,11 +216,10 @@ public class Employe extends AppCompatActivity {
                     dataEmploye.child(entry.getKey().toString()).child("clinique").setValue(clinic);
                 }
             }
-
-
         }
     }
 
+    //METHOD TO GO BACK
     public void cancel(View view) {
         Button cancel = findViewById(R.id.btnCancel);
         Button accept = findViewById(R.id.btnAccept);

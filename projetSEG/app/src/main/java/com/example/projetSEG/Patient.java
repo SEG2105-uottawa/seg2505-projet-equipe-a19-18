@@ -6,9 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-
+//PAGE POUR UN EMPLOYE
 public class Patient extends MainActivity {
-
 
 
     @Override

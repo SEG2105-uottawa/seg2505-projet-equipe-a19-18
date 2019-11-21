@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -17,17 +16,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
+//PAGE POUR AFFICHER LES SERVICES DISPONIBLES (ADMIN - SUPPRIMER ET MODIFIER) (EMPLOYE - AJOUTER A LA CLINIQUE)
 public class ListeServices extends AppCompatActivity {
 
     Button modifier, supprimer, ajouter;
 
     DatabaseReference dataService;
-    ArrayList<ServiceObject> serviceList;
 
     ListView list;
     ArrayList<String> array = new ArrayList<>();
@@ -45,6 +42,7 @@ public class ListeServices extends AppCompatActivity {
         Intent intent = getIntent();
         String fromEmploye = intent.getStringExtra("fromEmploye");
 
+        //DISTINCTION ENTRE ADMIN ET EMPLOYE
         if(fromEmploye == null) {
             modifier.setVisibility(View.VISIBLE);
             supprimer.setVisibility(View.VISIBLE);
@@ -55,10 +53,10 @@ public class ListeServices extends AppCompatActivity {
             ajouter.setVisibility(View.VISIBLE);
         }
 
-
+        //LIRE DATABASE POUR AFFICHER LA LISTE DES SERVICE
         dataService = FirebaseDatabase.getInstance().getReference("Service");
         list = findViewById(R.id.listViewService);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,array);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,array);
         list.setAdapter(adapter);
         dataService.addChildEventListener(new ChildEventListener() {
             @Override

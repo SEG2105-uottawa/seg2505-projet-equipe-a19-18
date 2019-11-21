@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     String prenom, nom;
     String courriel;
 
+    String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
                     nom = (String) info.get("nom");
                     prenom = (String) info.get("prenom");
                     courriel = (String) info.get("courriel");
+
+
+
 
                     User user = new User(username, password, nom, prenom, courriel);
                     patientList.add(user);

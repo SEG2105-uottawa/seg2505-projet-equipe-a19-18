@@ -35,6 +35,8 @@ public class Employe extends AppCompatActivity {
     //USER INFO
     String key, username;
 
+    String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,12 +75,13 @@ public class Employe extends AppCompatActivity {
                     TextView viewNom = findViewById(R.id.viewNom);
                     TextView viewAssurance = findViewById(R.id.viewAssurance);
                     TextView viewPaiment = findViewById(R.id.viewPaiment);
-                    if (nameOfUser.equals(username)) {
+                    if (nameOfUser.equals(username) && clinic != null) {
                         viewAdresse.setText(clinic.get("adresse").toString());
                         viewTel.setText(clinic.get("telephone").toString());
                         viewNom.setText(clinic.get("nom").toString());
                         viewAssurance.setText(clinic.get("assurance").toString());
                         viewPaiment.setText(clinic.get("paiment").toString());
+                        id = key;
                     }
 
                 }
@@ -214,6 +217,7 @@ public class Employe extends AppCompatActivity {
                 if (nameOfUser.equals(entry.getValue().toString())) {
                     Clinic clinic = new Clinic(adresse, tel, nom, assurance, paiment);
                     dataEmploye.child(entry.getKey().toString()).child("clinique").setValue(clinic);
+
                 }
             }
         }
@@ -252,14 +256,17 @@ public class Employe extends AppCompatActivity {
 
     public void service(View view) {
         Intent intent = new Intent(Employe.this, ClinicService.class);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
     public void heure(View view) {
         Intent intent = new Intent(Employe.this, ClinicHour.class);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
     public void shifts(View view) {
         Intent intent = new Intent(Employe.this, Shifts.class);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 }

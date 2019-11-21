@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 //PAGE POUR AFFICHER LES SERVICES DISPONIBLES (ADMIN - SUPPRIMER ET MODIFIER) (EMPLOYE - AJOUTER A LA CLINIQUE)
 public class ListeServices extends AppCompatActivity {
 
+    DatabaseReference dataEmploye;
     Button modifier, supprimer, ajouter;
 
     DatabaseReference dataService;
@@ -31,20 +33,29 @@ public class ListeServices extends AppCompatActivity {
     ArrayList<String> array = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
-    int selectedItem;
+    int selectedItem = -1;
     ArrayList<ServiceObject> objectList = new ArrayList<>();
+    ArrayList<String> keyList = new ArrayList<>();
+
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_services);
 
+        dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
+
         modifier = findViewById(R.id.btnModifier);
         supprimer = findViewById(R.id.btnSupprimer);
         ajouter = findViewById(R.id.btnAjouter);
 
+
         Intent intent = getIntent();
-        String fromEmploye = intent.getStringExtra("fromEmploye");
+        Bundle extras = intent.getExtras();
+        String fromEmploye = extras.getString("fromEmploye");
+        id = extras.getString("id");
+
 
         //DISTINCTION ENTRE ADMIN ET EMPLOYE
         if(fromEmploye == null) {
@@ -78,6 +89,7 @@ public class ListeServices extends AppCompatActivity {
                 array.add(value);
                 adapter.notifyDataSetChanged();
                 objectList.add(dataSnapshot.getValue(ServiceObject.class));
+                keyList.add(dataSnapshot.getKey());
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -97,10 +109,16 @@ public class ListeServices extends AppCompatActivity {
 
     public void ajout(View view) {
 
-        
+        if (selectedItem == -1) {
+            Toast.makeText(getApplicationContext(), "Choisir un service", Toast.LENGTH_LONG).show();
+        } else {
+            ServiceObject object = objectList.get(selectedItem);
+            dataEmploye.child(id).child("clinique").child("service").push().setValue(object);
 
-        Intent intent = new Intent(ListeServices.this, ClinicService.class);
-        startActivity(intent);
+            Intent intent = new Intent(ListeServices.this, ClinicService.class);
+            startActivity(intent);
+        }
+
     }
 
 }

@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.usertype, R.layout.support_simple_spinner_dropdown_item);
         _spinner.setAdapter(adapter);
 
+        password = null;
+
         dataPatient = FirebaseDatabase.getInstance().getReference("Patient");
         dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
         patientList = new ArrayList<>();
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        dataPatient.addValueEventListener((new ValueEventListener() {
+        dataPatient.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 patientList.clear();
@@ -67,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
                     HashMap info = (HashMap) infoRaw;
 
                     password = (String) info.get("password");
+                    //ERRorRRr
+                    password = Seg256.encrypt(password.getText().toString());
                     username = (String) info.get("username");
                     nom = (String) info.get("nom");
                     prenom = (String) info.get("prenom");
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
-        }));
+        });
 
         dataEmploye.addValueEventListener((new ValueEventListener() {
             @Override

@@ -255,18 +255,33 @@ public class Employe extends AppCompatActivity {
     }
 
     public void service(View view) {
-        Intent intent = new Intent(Employe.this, ClinicService.class);
-        intent.putExtra("id", id);
-        startActivity(intent);
+
+        if (id == null) {
+            Toast.makeText(getApplicationContext(), "Entrez les informations des la clinique AVANT", Toast.LENGTH_LONG).show();
+        } else {
+            Intent intent = new Intent(Employe.this, ClinicService.class);
+            intent.putExtra("id", id);
+            startActivity(intent);
+        }
+
     }
     public void heure(View view) {
-        Intent intent = new Intent(Employe.this, ClinicHour.class);
-        intent.putExtra("id", id);
-        startActivity(intent);
+        if (id == null) {
+            Toast.makeText(getApplicationContext(), "Entrez les informations des la clinique AVANT", Toast.LENGTH_LONG).show();
+        } else {
+            Intent intent = new Intent(Employe.this, ClinicHour.class);
+            intent.putExtra("id", id);
+            startActivity(intent);
+        }
     }
     public void shifts(View view) {
-        Intent intent = new Intent(Employe.this, Shifts.class);
-        intent.putExtra("id", id);
-        startActivity(intent);
+        if (id == null) {
+            Toast.makeText(getApplicationContext(), "Entrez les informations des la clinique AVANT", Toast.LENGTH_LONG).show();
+        } else {
+            Intent intent = new Intent(Employe.this, Shifts.class);
+            intent.putExtra("id", id);
+            startActivity(intent);
+        }
+
     }
 }

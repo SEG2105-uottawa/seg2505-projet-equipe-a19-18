@@ -45,6 +45,11 @@
             android:gravity="bottom"
             android:orientation="vertical">
 
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
             <Button
                 android:id="@+id/button6"
                 android:layout_width="match_parent"

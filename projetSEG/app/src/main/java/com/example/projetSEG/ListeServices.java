@@ -31,6 +31,9 @@ public class ListeServices extends AppCompatActivity {
     ArrayList<String> array = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
+    int selectedItem;
+    ArrayList<ServiceObject> objectList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +65,7 @@ public class ListeServices extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                view.setSelected(true);
+                selectedItem = position;
             }
         });
 
@@ -74,6 +77,7 @@ public class ListeServices extends AppCompatActivity {
                 String value = dataSnapshot.getValue(ServiceObject.class).toString();
                 array.add(value);
                 adapter.notifyDataSetChanged();
+                objectList.add(dataSnapshot.getValue(ServiceObject.class));
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -88,8 +92,15 @@ public class ListeServices extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
 
 
+    public void ajout(View view) {
+
+        
+
+        Intent intent = new Intent(ListeServices.this, ClinicService.class);
+        startActivity(intent);
     }
 
 }

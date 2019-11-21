@@ -43,9 +43,9 @@
         <ListView
             android:id="@+id/listViewService"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@drawable/my_selecter"
-            android:choiceMode="singleChoice">
+            android:listSelector="@color/colorAccent"
+            android:choiceMode="singleChoice"
+            android:layout_height="300dp" >
 
         </ListView>
 
@@ -96,6 +96,7 @@
                 android:layout_marginBottom="20dp"
                 android:background="@color/colorPrimaryDark"
                 android:fontFamily="casual"
+                android:onClick="ajout"
                 android:text="Ajouter le service sélectionné"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"

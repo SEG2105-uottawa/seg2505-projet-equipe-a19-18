@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
                     password = (String) info.get("password");
                     //ERRorRRr
-                    password = Seg256.encrypt(password.getText().toString());
+                   // password = Seg256.encrypt(password.getText().toString());
                     username = (String) info.get("username");
                     nom = (String) info.get("nom");
                     prenom = (String) info.get("prenom");

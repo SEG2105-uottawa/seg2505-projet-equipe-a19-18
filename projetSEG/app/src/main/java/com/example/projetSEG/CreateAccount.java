@@ -11,10 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
+//PAGE POUR CREER UN NOUVEAU COMPTE
 public class CreateAccount extends AppCompatActivity {
 
+    //INFORMATION POUR USER
     EditText Mdp, Mdp2 , txtUser, prenom, nom, courriel;
+    //FIREBASE
     private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference patient = data.child("Patient");
     private DatabaseReference employe = data.child("Employe");
@@ -25,6 +27,8 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
     }
+
+    //CREER NOUVEAU ACCOUNT PATIENT FIREBASE
     public void createAccountPatient(View view) {
 
         Mdp = findViewById(R.id.txtMdp);
@@ -50,6 +54,7 @@ public class CreateAccount extends AppCompatActivity {
         }
     }
 
+    //CREER NOUVEAU ACCOUNT EMPLOYE FIREBASE
     public void createAccountEmploye(View view) {
 
         Mdp = findViewById(R.id.txtMdp);
@@ -62,7 +67,6 @@ public class CreateAccount extends AppCompatActivity {
         if (!Mdp2.getText().toString().equals(Mdp.getText().toString())) {
             Toast.makeText(getApplicationContext(), "Mot de passe différent.", Toast.LENGTH_LONG).show();
         } else if(!(txtUser.getText().toString().equals(""))&&!(Mdp.getText().toString().equals(""))){
-
 
             User user = new User(txtUser.getText().toString(), Mdp.getText().toString(),
                     nom.getText().toString(), prenom.getText().toString(), courriel.getText().toString());

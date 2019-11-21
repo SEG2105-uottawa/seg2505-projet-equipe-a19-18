@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+//PAGE POUR SUPPRIMER UN COMPTE PATIENT OU EMPLOYE PAR UN ADMIN
 public class SupprimerCompte extends AppCompatActivity {
 
     @Override

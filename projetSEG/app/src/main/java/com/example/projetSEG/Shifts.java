@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+//PAGE POUR AFFICHER LES HEURES DE TRAVAIL DE L EMPLOYE
 public class Shifts extends AppCompatActivity {
 
     @Override

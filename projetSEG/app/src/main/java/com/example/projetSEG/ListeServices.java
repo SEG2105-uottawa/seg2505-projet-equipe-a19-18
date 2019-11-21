@@ -53,20 +53,26 @@ public class ListeServices extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        String fromEmploye = extras.getString("fromEmploye");
-        id = extras.getString("id");
 
+        if (extras != null) {
+            String fromEmploye = extras.getString("fromEmploye");
+            id = extras.getString("id");
 
-        //DISTINCTION ENTRE ADMIN ET EMPLOYE
-        if(fromEmploye == null) {
-            modifier.setVisibility(View.VISIBLE);
-            supprimer.setVisibility(View.VISIBLE);
-            ajouter.setVisibility(View.GONE);
-        } else if (fromEmploye.equals("true")) {
-            modifier.setVisibility(View.GONE);
-            supprimer.setVisibility(View.GONE);
-            ajouter.setVisibility(View.VISIBLE);
+            //DISTINCTION ENTRE ADMIN ET EMPLOYE
+            if(fromEmploye == null) {
+                modifier.setVisibility(View.VISIBLE);
+                supprimer.setVisibility(View.VISIBLE);
+                ajouter.setVisibility(View.GONE);
+            } else if (fromEmploye.equals("true")) {
+                modifier.setVisibility(View.GONE);
+                supprimer.setVisibility(View.GONE);
+                ajouter.setVisibility(View.VISIBLE);
+            }
         }
+
+
+
+
 
         //LIRE DATABASE POUR AFFICHER LA LISTE DES SERVICE
         dataService = FirebaseDatabase.getInstance().getReference("Service");

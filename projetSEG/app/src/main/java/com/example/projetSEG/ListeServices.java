@@ -52,22 +52,19 @@ public class ListeServices extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
+        id = intent.getStringExtra("id");
 
-        if (extras != null) {
-            String fromEmploye = extras.getString("fromEmploye");
-            id = extras.getString("id");
+        //DISTINCTION ENTRE ADMIN ET EMPLOYE
+        if (id != null) {
 
-            //DISTINCTION ENTRE ADMIN ET EMPLOYE
-            if(fromEmploye == null) {
-                modifier.setVisibility(View.VISIBLE);
-                supprimer.setVisibility(View.VISIBLE);
-                ajouter.setVisibility(View.GONE);
-            } else if (fromEmploye.equals("true")) {
-                modifier.setVisibility(View.GONE);
-                supprimer.setVisibility(View.GONE);
-                ajouter.setVisibility(View.VISIBLE);
-            }
+            modifier.setVisibility(View.GONE);
+            supprimer.setVisibility(View.GONE);
+            ajouter.setVisibility(View.VISIBLE);
+
+        } else {
+            modifier.setVisibility(View.VISIBLE);
+            supprimer.setVisibility(View.VISIBLE);
+            ajouter.setVisibility(View.GONE);
         }
 
 

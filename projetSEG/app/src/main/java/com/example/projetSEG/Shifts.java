@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,24 +17,31 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+
 
 //PAGE POUR AFFICHER LES HEURES DE TRAVAIL DE L EMPLOYE
 public class Shifts extends AppCompatActivity {
 
-
     DatabaseReference dataEmploye;
-    ArrayList<String> list;
-
-
-    //USER INFO
-    String key, username;
-
+    String key;
     String id;
+
+    TextView viewLundi;
+    TextView viewMardi;
+    TextView viewMercredi;
+    TextView viewJeudi;
+    TextView viewVendredi;
+
+    EditText editLundi;
+    EditText editMardi;
+    EditText editMercredi;
+    EditText editJeudi;
+    EditText editVendredi;
+
+    Button cancel;
+    Button accept;
+    Button change;
 
 
     @Override
@@ -46,7 +53,23 @@ public class Shifts extends AppCompatActivity {
         id = intent.getStringExtra("id");
 
         dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
-        list = new ArrayList<>();
+
+        viewLundi = findViewById(R.id.viewLundi);
+        viewMardi = findViewById(R.id.viewMardi);
+        viewMercredi = findViewById(R.id.viewMercredi);
+        viewJeudi = findViewById(R.id.viewJeudi);
+        viewVendredi = findViewById(R.id.viewVendredi);
+
+        editLundi = findViewById(R.id.editLundi);
+        editMardi = findViewById(R.id.editMardi);
+        editMercredi = findViewById(R.id.editMercredi);
+        editJeudi = findViewById(R.id.editJeudi);
+        editVendredi = findViewById(R.id.editVendredi);
+
+        cancel = findViewById(R.id.btnCancel1);
+        accept = findViewById(R.id.btnAccept1);
+        change = findViewById(R.id.btnChange1);
+
     }
 
     //LIRE DATABASE
@@ -56,28 +79,21 @@ public class Shifts extends AppCompatActivity {
         dataEmploye.addValueEventListener((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list.clear();
+
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //GET INFO DATABASE
-                    Object infoRaw = postSnapshot.getValue();
+                    HashMap info = (HashMap) postSnapshot.getValue();
                     key = postSnapshot.getKey();
-                    HashMap info = (HashMap) infoRaw;
-                    list.add(key);
 
                     //SET VIEW INFORMATION
                     HashMap mesHeures = (HashMap) info.get("mesHeures");
-                    TextView viewLundi = findViewById(R.id.viewLundi);
-                    TextView viewMardi = findViewById(R.id.viewMardi);
-                    TextView viewMercredi = findViewById(R.id.viewMercredi);
-                    TextView viewJeudi = findViewById(R.id.viewJeudi);
-                    TextView viewVendredi = findViewById(R.id.viewVendredi);
                     if (id.equals(key) && mesHeures != null) {
                         viewLundi.setText(mesHeures.get("lundi").toString());
                         viewMardi.setText(mesHeures.get("mardi").toString());
                         viewMercredi.setText(mesHeures.get("mercredi").toString());
                         viewJeudi.setText(mesHeures.get("jeudi").toString());
                         viewVendredi.setText(mesHeures.get("vendredi").toString());
-                        id = key;
+
                     }
 
                 }
@@ -92,21 +108,6 @@ public class Shifts extends AppCompatActivity {
     }
 
     public void change(View view) {
-        Button cancel = findViewById(R.id.btnCancel1);
-        Button accept = findViewById(R.id.btnAccept1);
-        Button change = findViewById(R.id.btnChange1);
-
-        EditText editLundi = findViewById(R.id.editLundi);
-        TextView viewLundi = findViewById(R.id.viewLundi);
-        EditText editMardi = findViewById(R.id.editMardi);
-        TextView viewMardi = findViewById(R.id.viewMardi);
-        EditText editMercredi = findViewById(R.id.editMercredi);
-        TextView viewMercredi = findViewById(R.id.viewMercredi);
-        EditText editJeudi = findViewById(R.id.editJeudi);
-        TextView viewJeudi = findViewById(R.id.viewJeudi);
-        EditText editVendredi = findViewById(R.id.editVendredi);
-        TextView viewVendredi = findViewById(R.id.viewVendredi);
-
 
         cancel.setVisibility(View.VISIBLE);
         accept.setVisibility(View.VISIBLE);
@@ -142,20 +143,6 @@ public class Shifts extends AppCompatActivity {
     //METHODE POUR ACCEPTER LE CHANGEMENT
     public void accept(View view) {
 
-        Button cancel = findViewById(R.id.btnCancel1);
-        Button accept = findViewById(R.id.btnAccept1);
-        Button change = findViewById(R.id.btnChange1);
-        EditText editLundi = findViewById(R.id.editLundi);
-        TextView viewLundi = findViewById(R.id.viewLundi);
-        EditText editMardi = findViewById(R.id.editMardi);
-        TextView viewMardi = findViewById(R.id.viewMardi);
-        EditText editMercredi = findViewById(R.id.editMercredi);
-        TextView viewMercredi = findViewById(R.id.viewMercredi);
-        EditText editJeudi = findViewById(R.id.editJeudi);
-        TextView viewJeudi = findViewById(R.id.viewJeudi);
-        EditText editVendredi = findViewById(R.id.editVendredi);
-        TextView viewVendredi = findViewById(R.id.viewVendredi);
-
         cancel.setVisibility(View.GONE);
         accept.setVisibility(View.GONE);
         change.setVisibility(View.VISIBLE);
@@ -185,29 +172,16 @@ public class Shifts extends AppCompatActivity {
         editVendredi.setVisibility(View.GONE);
         viewVendredi.setVisibility(View.VISIBLE);
 
-        //UPDATE FIREBASE
 
+        //UPDATE FIREBASE
         ShiftsObject mesHeures = new ShiftsObject(Lundi, Mardi, Mercredi, Jeudi, Vendredi);
         dataEmploye.child(id).child("mesHeures").setValue(mesHeures);
-
 
     }
 
     //METHOD TO GO BACK
     public void cancel(View view) {
-        Button cancel = findViewById(R.id.btnCancel1);
-        Button accept = findViewById(R.id.btnAccept1);
-        Button change = findViewById(R.id.btnChange1);
-        EditText editLundi = findViewById(R.id.editLundi);
-        TextView viewLundi = findViewById(R.id.viewLundi);
-        EditText editMardi = findViewById(R.id.editMardi);
-        TextView viewMardi = findViewById(R.id.viewMardi);
-        EditText editMercredi = findViewById(R.id.editMercredi);
-        TextView viewMercredi = findViewById(R.id.viewMercredi);
-        EditText editJeudi = findViewById(R.id.editJeudi);
-        TextView viewJeudi = findViewById(R.id.viewJeudi);
-        EditText editVendredi = findViewById(R.id.editVendredi);
-        TextView viewVendredi = findViewById(R.id.viewVendredi);
+
         cancel.setVisibility(View.GONE);
         accept.setVisibility(View.GONE);
         change.setVisibility(View.VISIBLE);

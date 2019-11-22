@@ -141,6 +141,23 @@ public class ListeServices extends AppCompatActivity {
 
     }
 
-    //reste supprimer et modifier
+    public void modifie(View view) {
+
+        String serviceID;
+        if (selectedItem == -1) {
+            Toast.makeText(getApplicationContext(), "Choisir un service", Toast.LENGTH_LONG).show();
+        } else {
+            serviceID = keyList.get(selectedItem);
+
+
+            Intent intent = new Intent(ListeServices.this, NouveauService.class);
+            intent.putExtra("service", serviceID);
+            startActivity(intent);
+        }
+
+
+    }
+
+
 
 }

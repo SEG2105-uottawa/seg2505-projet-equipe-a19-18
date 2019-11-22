@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -21,6 +22,9 @@ public class NouveauService extends AppCompatActivity {
 
     EditText description;
     Spinner spinner;
+    String serviceID;
+
+    Button creer, cancel, accept;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,27 @@ public class NouveauService extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.role, R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter2);
         description = findViewById(R.id.description);
+
+        creer = findViewById(R.id.buttonCreerService);
+        cancel = findViewById(R.id.btnCancelChange);
+        accept = findViewById(R.id.btnAcceptChange);
+
+        Intent intent = getIntent();
+        serviceID = intent.getStringExtra("service");
+
+        //DISTINCTION ENTRE creeer ET modifier
+        if (serviceID == null) {
+
+            accept.setVisibility(View.GONE);
+            cancel.setVisibility(View.GONE);
+            creer.setVisibility(View.VISIBLE);
+
+        } else {
+            accept.setVisibility(View.VISIBLE);
+            cancel.setVisibility(View.VISIBLE);
+            creer.setVisibility(View.GONE);
+        }
+
     }
 
     //CREER SERVICE FIREBASE

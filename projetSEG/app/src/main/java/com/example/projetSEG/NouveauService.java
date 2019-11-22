@@ -134,7 +134,7 @@ public class NouveauService extends AppCompatActivity {
             intent.putExtra("nouveauService", "La modification du service est accepter");
             startActivity(intent);
         }
-        
+
     }
 
     //METHOD TO GO BACK

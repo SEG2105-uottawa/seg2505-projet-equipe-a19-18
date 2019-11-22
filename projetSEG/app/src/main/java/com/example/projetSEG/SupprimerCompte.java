@@ -19,13 +19,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+
 
 //PAGE POUR SUPPRIMER UN COMPTE PATIENT OU EMPLOYE PAR UN ADMIN
 public class SupprimerCompte extends AppCompatActivity {
 
 
-    DatabaseReference dataEmploye, dataPatient;
+    DatabaseReference dataEmploye, dataPatient, data;
 
     ListView list;
     ArrayList<String> array = new ArrayList<>();
@@ -34,8 +35,8 @@ public class SupprimerCompte extends AppCompatActivity {
     int selectedItem = -1;
 
     ArrayList<String> keyList = new ArrayList<>();
+    ArrayList<String> typeList = new ArrayList<>();
 
-    //String id;
 
 
     @Override
@@ -43,6 +44,7 @@ public class SupprimerCompte extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supprimer_compte);
 
+        data = FirebaseDatabase.getInstance().getReference();
         dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
         dataPatient = FirebaseDatabase.getInstance().getReference("Patient");
 
@@ -56,28 +58,31 @@ public class SupprimerCompte extends AppCompatActivity {
             }
         });
 
-        //Doit trouver une moyen inserer employe et client
-        /*
-        data.addChildEventListener(new ChildEventListener() {
+
+        dataPatient.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String value = dataSnapshot.getValue(ServiceObject.class).toString();
+
+
+                HashMap info = (HashMap) dataSnapshot.getValue();
+                String key = dataSnapshot.getKey();
+                String username = (String) info.get("username");
+
+                String value = "Patient : "+username;
+
                 array.add(value);
                 adapter.notifyDataSetChanged();
-                keyList.add(dataSnapshot.getKey());
+                keyList.add(key);
+                typeList.add("Patient");
 
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
                 adapter.notifyDataSetChanged();
-
             }
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
                 adapter.notifyDataSetChanged();
-
             }
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -86,27 +91,57 @@ public class SupprimerCompte extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-        */
+
+        dataEmploye.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                HashMap info = (HashMap) dataSnapshot.getValue();
+                String key = dataSnapshot.getKey();
+                String username = (String) info.get("username");
+
+                String value = "Employe : "+username;
+
+                array.add(value);
+                adapter.notifyDataSetChanged();
+                keyList.add(key);
+                typeList.add("Employe");
+
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
     }
-
-
-
 
 
     public void supprime(View view) {
 
-        /*
         if (selectedItem == -1) {
-            Toast.makeText(getApplicationContext(), "Choisir un service", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Choisir un compte", Toast.LENGTH_LONG).show();
         } else {
 
-            String serviceID = keyList.get(selectedItem);
-            data.child(serviceID).setValue(null);
+            String id = keyList.get(selectedItem);
+            String type = typeList.get(selectedItem);
+            data.child(type).child(id).setValue(null);
             array.remove(selectedItem);
             keyList.remove(selectedItem);
+            typeList.remove(selectedItem);
 
         }
-         */
+
     }
 
 }

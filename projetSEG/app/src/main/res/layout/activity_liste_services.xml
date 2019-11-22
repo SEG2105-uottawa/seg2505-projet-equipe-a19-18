@@ -80,6 +80,7 @@
                 android:layout_marginBottom="20dp"
                 android:background="@color/colorPrimaryDark"
                 android:fontFamily="casual"
+                android:onClick="supprime"
                 android:text="Supprimer le service sélectionné"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"

@@ -95,9 +95,11 @@ public class ListeServices extends AppCompatActivity {
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                adapter.notifyDataSetChanged();
             }
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                adapter.notifyDataSetChanged();
             }
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -123,5 +125,22 @@ public class ListeServices extends AppCompatActivity {
         }
 
     }
+
+    public void supprime(View view) {
+
+        if (selectedItem == -1) {
+            Toast.makeText(getApplicationContext(), "Choisir un service", Toast.LENGTH_LONG).show();
+        } else {
+
+            String serviceID = keyList.get(selectedItem);
+            dataService.child(serviceID).setValue(null);
+            array.remove(selectedItem);
+            keyList.remove(selectedItem);
+
+        }
+
+    }
+
+    //reste supprimer et modifier
 
 }

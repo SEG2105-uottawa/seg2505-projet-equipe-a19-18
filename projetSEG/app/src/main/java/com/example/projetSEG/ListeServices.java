@@ -70,7 +70,6 @@ public class ListeServices extends AppCompatActivity {
 
 
 
-
         //LIRE DATABASE POUR AFFICHER LA LISTE DES SERVICE
         dataService = FirebaseDatabase.getInstance().getReference("Service");
         list = findViewById(R.id.listViewService);

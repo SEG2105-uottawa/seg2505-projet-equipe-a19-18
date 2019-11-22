@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 //PAGE POUR CREER UN NOUVEAU SERVICE (ADMIN)
@@ -35,6 +36,9 @@ public class NouveauService extends AppCompatActivity {
     String key;
 
     Button creer, cancel, accept;
+
+    ArrayList<String> idList;
+    ArrayList<String> serviceList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,9 @@ public class NouveauService extends AppCompatActivity {
             creer.setVisibility(View.GONE);
         }
 
+        idList = new ArrayList<>();
+        serviceList = new ArrayList<>();
+
     }
 
     //LIRE DATABASE
@@ -91,6 +98,9 @@ public class NouveauService extends AppCompatActivity {
                         }
                     }
 
+                    idList.add(serviceInfo);
+                    serviceList.add(serviceUser);
+
                 }
             }
 
@@ -104,7 +114,10 @@ public class NouveauService extends AppCompatActivity {
 
     //CREER SERVICE FIREBASE
     public void Creation (View view) {
-        if (description.getText().toString().equals("")) {
+
+        if (alreadyCreated(description.getText().toString(), spinner.getSelectedItem().toString())) {
+            Toast.makeText(getApplicationContext(), "Le service existe déjà", Toast.LENGTH_LONG).show();
+        } else if (description.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Veuillez donner une description", Toast.LENGTH_LONG).show();
         } else if (spinner.getSelectedItem().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Veuillez choisir un role", Toast.LENGTH_LONG).show();
@@ -121,7 +134,9 @@ public class NouveauService extends AppCompatActivity {
 
     public void accept(View view) {
 
-        if (description.getText().toString().equals("")) {
+        if (alreadyCreated(description.getText().toString(), spinner.getSelectedItem().toString())) {
+            Toast.makeText(getApplicationContext(), "Le service existe déjà", Toast.LENGTH_LONG).show();
+        } else if (description.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Veuillez donner une description", Toast.LENGTH_LONG).show();
         } else if (spinner.getSelectedItem().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Veuillez choisir un role", Toast.LENGTH_LONG).show();
@@ -144,5 +159,16 @@ public class NouveauService extends AppCompatActivity {
         intent.putExtra("nouveauService", "La modification du service est annuler");
         startActivity(intent);
 
+    }
+
+
+    private boolean alreadyCreated (String id, String service) {
+        boolean used = false;
+        for (int i = 0; i < idList.size(); i++) {
+            if (id.equals(idList.get(i)) && service.equals(serviceList.get(i))) {
+                used = true;
+            }
+        }
+        return used;
     }
 }

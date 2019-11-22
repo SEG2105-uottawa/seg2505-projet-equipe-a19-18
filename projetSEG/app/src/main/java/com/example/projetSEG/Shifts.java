@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class Shifts extends AppCompatActivity {
 
 
     DatabaseReference dataEmploye;
-    HashMap<String,String> list;
+    ArrayList<String> list;
 
 
     //USER INFO
@@ -45,7 +46,7 @@ public class Shifts extends AppCompatActivity {
         id = intent.getStringExtra("id");
 
         dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
-        list = new HashMap<>();
+        list = new ArrayList<>();
     }
 
     //LIRE DATABASE
@@ -61,8 +62,7 @@ public class Shifts extends AppCompatActivity {
                     Object infoRaw = postSnapshot.getValue();
                     key = postSnapshot.getKey();
                     HashMap info = (HashMap) infoRaw;
-                    username = (String) info.get("username");
-                    list.put(key,username);
+                    list.add(key);
 
                     //SET VIEW INFORMATION
                     HashMap mesHeures = (HashMap) info.get("mesHeures");
@@ -186,16 +186,10 @@ public class Shifts extends AppCompatActivity {
         viewVendredi.setVisibility(View.VISIBLE);
 
         //UPDATE FIREBASE
-        Set set = list.entrySet();
-        Iterator iterator = set.iterator();
-        while(iterator.hasNext()) {
-            Map.Entry entry = (Map.Entry)iterator.next();
-            if (id.equals(entry.getKey().toString())) {
-                ShiftsObject mesHeures = new ShiftsObject(Lundi, Mardi, Mercredi, Jeudi, Vendredi);
-                dataEmploye.child(entry.getKey().toString()).child("mesHeures").setValue(mesHeures);
 
-            }
-        }
+        ShiftsObject mesHeures = new ShiftsObject(Lundi, Mardi, Mercredi, Jeudi, Vendredi);
+        dataEmploye.child(id).child("mesHeures").setValue(mesHeures);
+
 
     }
 

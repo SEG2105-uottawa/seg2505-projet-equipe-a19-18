@@ -98,10 +98,7 @@ public class ClinicService extends AppCompatActivity {
 
     public void ajout(View view) {
         Intent intent = new Intent(ClinicService.this, ListeServices.class);
-        Bundle extras = new Bundle();
-        extras.putString("fromEmploye", "true");
-        extras.putString("id",id);
-        intent.putExtras(extras);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 
@@ -115,7 +112,6 @@ public class ClinicService extends AppCompatActivity {
             data.child(serviceID).setValue(null);
             array.remove(selectedItem);
             keyList.remove(selectedItem);
-
 
         }
 

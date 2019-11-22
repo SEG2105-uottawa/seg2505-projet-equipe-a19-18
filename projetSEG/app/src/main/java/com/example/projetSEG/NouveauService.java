@@ -9,20 +9,30 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 //PAGE POUR CREER UN NOUVEAU SERVICE (ADMIN)
 public class NouveauService extends AppCompatActivity {
 
     private DatabaseReference data = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference service = data.child("Service");
+    private DatabaseReference dataService = data.child("Service");
 
     EditText description;
     Spinner spinner;
+    ArrayAdapter<CharSequence> adapter2;
+
+
     String serviceID;
+    String key;
 
     Button creer, cancel, accept;
 
@@ -32,7 +42,7 @@ public class NouveauService extends AppCompatActivity {
         setContentView(R.layout.activity_nouveau_service);
 
         spinner = findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.role, R.layout.support_simple_spinner_dropdown_item);
+        adapter2 = ArrayAdapter.createFromResource(this, R.array.role, R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter2);
         description = findViewById(R.id.description);
 
@@ -58,6 +68,40 @@ public class NouveauService extends AppCompatActivity {
 
     }
 
+    //LIRE DATABASE
+    @Override
+    protected void onStart() {
+        super.onStart();
+        dataService.addValueEventListener((new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //GET INFO DATABASE
+
+                    HashMap info = (HashMap) postSnapshot.getValue();
+                    key = postSnapshot.getKey();
+                    String serviceInfo = (String) info.get("id");
+                    String serviceUser = (String) info.get("service");
+
+                    if (serviceID != null) {
+                        if (serviceID.equals(key)) {
+                            description.setText(serviceInfo);
+                            spinner.setSelection(adapter2.getPosition(serviceUser));
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        }));
+
+
+    }
+
     //CREER SERVICE FIREBASE
     public void Creation (View view) {
         if (description.getText().toString().equals("")) {
@@ -67,11 +111,38 @@ public class NouveauService extends AppCompatActivity {
         } else {
 
             ServiceObject newService = new ServiceObject(description.getText().toString(), spinner.getSelectedItem().toString());
-            service.push().setValue(newService);
+            dataService.push().setValue(newService);
 
             Intent intent = new Intent(NouveauService.this, Administrateur.class);
             intent.putExtra("nouveauService", "Le service à bien été créé");
             startActivity(intent);
         }
+    }
+
+    public void accept(View view) {
+
+        if (description.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Veuillez donner une description", Toast.LENGTH_LONG).show();
+        } else if (spinner.getSelectedItem().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Veuillez choisir un role", Toast.LENGTH_LONG).show();
+        } else {
+
+            ServiceObject newService = new ServiceObject(description.getText().toString(), spinner.getSelectedItem().toString());
+            dataService.child(serviceID).setValue(newService);
+
+            Intent intent = new Intent(NouveauService.this, Administrateur.class);
+            intent.putExtra("nouveauService", "La modification du service est accepter");
+            startActivity(intent);
+        }
+        
+    }
+
+    //METHOD TO GO BACK
+    public void cancel(View view) {
+
+        Intent intent = new Intent(NouveauService.this, Administrateur.class);
+        intent.putExtra("nouveauService", "La modification du service est annuler");
+        startActivity(intent);
+
     }
 }

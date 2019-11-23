@@ -29,6 +29,22 @@
             android:text="Bienvenue patient! Vous êtes connecté en tant que patient"
             android:textColor="#000000"
             android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button54"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginBottom="25dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="casual"
+            android:onClick="recherche"
+            android:text="Rechercher une clinique"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

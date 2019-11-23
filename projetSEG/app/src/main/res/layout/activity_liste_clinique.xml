@@ -39,10 +39,11 @@
         </LinearLayout>
 
         <ListView
+            android:id="@+id/listClinic"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:listSelector="@color/colorAccent"
-            android:choiceMode="singleChoice">
+            android:choiceMode="singleChoice"
+            android:listSelector="@color/colorAccent">
 
         </ListView>
 

@@ -3,6 +3,7 @@ package com.example.projetSEG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -50,6 +51,7 @@ public class Employe extends AppCompatActivity {
 
 
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +74,6 @@ public class Employe extends AppCompatActivity {
         viewAssurance = findViewById(R.id.viewAssurance);
         editPaiment = findViewById(R.id.editPaiment);
         viewPaiment = findViewById(R.id.viewPaiment);
-
         cancel = findViewById(R.id.btnCancel);
         accept = findViewById(R.id.btnAccept);
         change = findViewById(R.id.btnChange);

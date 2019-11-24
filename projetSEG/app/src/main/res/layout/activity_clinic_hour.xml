@@ -8,59 +8,227 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/imageView46"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/unnamed" />
+
+
+        <TextView
+            android:id="@+id/textViewShift2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Voici l'horaire de la clinique"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:visibility="visible">
 
-            <ImageView
-                android:id="@+id/imageView2140"
-                android:layout_width="77dp"
-                android:layout_height="77dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/unnamed" />
-
-            <TextView
-                android:id="@+id/textView983"
+            <Button
+                android:id="@+id/btnAccept2"
                 android:layout_width="wrap_content"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:padding="15dp"
-                android:text="Vous êtes sur la page de l'horaire de la clinique"
+                android:background="@color/colorPrimaryDark"
+                android:onClick="accept"
+                android:text="Accepter les changements"
                 android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:visibility="gone" />
 
+            <Button
+                android:id="@+id/btnCancel2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:onClick="cancel"
+                android:text="Annuler les changements"
+                android:textColor="#000000"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnChange2"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@color/colorPrimary"
+                android:onClick="change"
+                android:paddingBottom="5dp"
+                android:text="Modifier les informations"
+                android:textColor="#FFFFFF"
+                android:visibility="visible" />
         </LinearLayout>
 
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textLundi2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="Choisissez la journée que vous voulez voir l'horaire d'ouverture"
-            android:textColor="@color/colorAccent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Lundi :"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/viewHoraire"
+            android:id="@+id/viewLundi2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editLundi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
             android:textSize="18sp"
-            tools:text="Horaire" />
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textMardi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Mardi :"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/viewMardi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editMardi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textMercredi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Mercredi :"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/viewMercredi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editMercredi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textJeudi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Jeudi :"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/viewJeudi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editJeudi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textVendredi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Vendredi :"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/viewVendredi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editVendredi2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Name"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

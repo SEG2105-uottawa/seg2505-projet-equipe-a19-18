@@ -1,12 +1,11 @@
 package com.example.projetSEG;
 
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
 
 //PAGE POUR AFFICHER LES HEURES DE LA CLINIQUE
 public class ClinicHour extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

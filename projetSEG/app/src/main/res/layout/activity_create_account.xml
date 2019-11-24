@@ -106,7 +106,7 @@
             <Button
                 android:id="@+id/btnCreerP"
                 style="@android:style/Widget.Button.Toggle"
-                android:layout_width="wrap_content"
+                android:layout_width="283dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="50dp"
@@ -125,7 +125,7 @@
             <Button
                 android:id="@+id/btnCreerE"
                 style="@android:style/Widget.Button.Toggle"
-                android:layout_width="wrap_content"
+                android:layout_width="283dp"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="50dp"
@@ -135,7 +135,6 @@
                 android:background="@color/colorPrimaryDark"
                 android:fontFamily="casual"
                 android:onClick="createAccountEmploye"
-
                 android:text="Créer votre compte employé"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"

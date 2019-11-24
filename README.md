@@ -20,5 +20,11 @@ Web Link for the UML class diagram on the UMPLE Online page:
 ---
 https://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=191012276330&fbclid=IwAR0wGzUqYrf1z1lrbwqISxbmn-YOH9aFAKPIiMmUwh274_1ZRnQEwJtTD9s
 ---
-
-** Ceci est pour le livrable 3
+************************************  
+Statut de construction
+[![Construire
+État]
+(https://circleci.com/gh/SEG2105F18/ProductCatalog.png?branch=master)]
+(https: // circle
+ci.com/gh/SEG2105F18/ProductCatalog)
+************************************ 

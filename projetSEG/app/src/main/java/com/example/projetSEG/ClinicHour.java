@@ -22,7 +22,7 @@ import java.util.HashMap;
 //PAGE POUR AFFICHER LES HEURES DE LA CLINIQUE
 public class ClinicHour extends AppCompatActivity {
 
-    DatabaseReference dataEmploye, data;
+    DatabaseReference dataEmploye;
     String key;
     String id;
 

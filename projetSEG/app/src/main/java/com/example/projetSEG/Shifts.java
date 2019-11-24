@@ -1,154 +1,200 @@
 package com.example.projetSEG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+
 
 //PAGE POUR AFFICHER LES HEURES DE TRAVAIL DE L EMPLOYE
 public class Shifts extends AppCompatActivity {
+
+    DatabaseReference dataEmploye;
+    String key;
+    String id;
+
+    TextView viewLundi;
+    TextView viewMardi;
+    TextView viewMercredi;
+    TextView viewJeudi;
+    TextView viewVendredi;
+
+    EditText editLundi;
+    EditText editMardi;
+    EditText editMercredi;
+    EditText editJeudi;
+    EditText editVendredi;
+
+    Button cancel;
+    Button accept;
+    Button change;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shifts);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+
+        dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
+
+        viewLundi = findViewById(R.id.viewLundi);
+        viewMardi = findViewById(R.id.viewMardi);
+        viewMercredi = findViewById(R.id.viewMercredi);
+        viewJeudi = findViewById(R.id.viewJeudi);
+        viewVendredi = findViewById(R.id.viewVendredi);
+
+        editLundi = findViewById(R.id.editLundi);
+        editMardi = findViewById(R.id.editMardi);
+        editMercredi = findViewById(R.id.editMercredi);
+        editJeudi = findViewById(R.id.editJeudi);
+        editVendredi = findViewById(R.id.editVendredi);
+
+        cancel = findViewById(R.id.btnCancel1);
+        accept = findViewById(R.id.btnAccept1);
+        change = findViewById(R.id.btnChange1);
+
+    }
+
+    //LIRE DATABASE
+    @Override
+    protected void onStart() {
+        super.onStart();
+        dataEmploye.addValueEventListener((new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //GET INFO DATABASE
+                    HashMap info = (HashMap) postSnapshot.getValue();
+                    key = postSnapshot.getKey();
+
+                    //SET VIEW INFORMATION
+                    HashMap mesHeures = (HashMap) info.get("mesHeures");
+                    if (id.equals(key) && mesHeures != null) {
+                        viewLundi.setText(mesHeures.get("lundi").toString());
+                        viewMardi.setText(mesHeures.get("mardi").toString());
+                        viewMercredi.setText(mesHeures.get("mercredi").toString());
+                        viewJeudi.setText(mesHeures.get("jeudi").toString());
+                        viewVendredi.setText(mesHeures.get("vendredi").toString());
+
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        }));
+
+
     }
 
     public void change(View view) {
-        Button cancel = findViewById(R.id.btnCancel1);
-        Button accept = findViewById(R.id.btnAccept1);
-        Button change = findViewById(R.id.btnChange1);
-
-        EditText editAdresse = findViewById(R.id.editAdresse);
-        TextView viewAdresse = findViewById(R.id.viewAdresse);
-        EditText editTel = findViewById(R.id.editTel);
-        TextView viewTel = findViewById(R.id.viewTel);
-        EditText editNom = findViewById(R.id.editNom);
-        TextView viewNom = findViewById(R.id.viewNom);
-        EditText editAssurance = findViewById(R.id.editAssurance);
-        TextView viewAssurance = findViewById(R.id.viewAssurance);
-        EditText editPaiment = findViewById(R.id.editPaiment);
-        TextView viewPaiment = findViewById(R.id.viewPaiment);
-
 
         cancel.setVisibility(View.VISIBLE);
         accept.setVisibility(View.VISIBLE);
         change.setVisibility(View.GONE);
 
-        String adresse = viewAdresse.getText().toString();
-        editAdresse.setText(adresse);
-        editAdresse.setVisibility(View.VISIBLE);
-        viewAdresse.setVisibility(View.GONE);
+        String Lundi = viewLundi.getText().toString();
+        editLundi.setText(Lundi);
+        editLundi.setVisibility(View.VISIBLE);
+        viewLundi.setVisibility(View.GONE);
 
-        String tel = viewTel.getText().toString();
-        editTel.setText(tel);
-        editTel.setVisibility(View.VISIBLE);
-        viewTel.setVisibility(View.GONE);
+        String Mardi = viewMardi.getText().toString();
+        editMardi.setText(Mardi);
+        editMardi.setVisibility(View.VISIBLE);
+        viewMardi.setVisibility(View.GONE);
 
-        String nom = viewNom.getText().toString();
-        editNom.setText(nom);
-        editNom.setVisibility(View.VISIBLE);
-        viewNom.setVisibility(View.GONE);
+        String Mercredi = viewMercredi.getText().toString();
+        editMercredi.setText(Mercredi);
+        editMercredi.setVisibility(View.VISIBLE);
+        viewMercredi.setVisibility(View.GONE);
 
-        String assurance = viewAssurance.getText().toString();
-        editAssurance.setText(assurance);
-        editAssurance.setVisibility(View.VISIBLE);
-        viewAssurance.setVisibility(View.GONE);
+        String Jeudi = viewJeudi.getText().toString();
+        editJeudi.setText(Jeudi);
+        editJeudi.setVisibility(View.VISIBLE);
+        viewJeudi.setVisibility(View.GONE);
 
-        String paiment = viewPaiment.getText().toString();
-        editPaiment.setText(paiment);
-        editPaiment.setVisibility(View.VISIBLE);
-        viewPaiment.setVisibility(View.GONE);
+        String Vendredi = viewVendredi.getText().toString();
+        editVendredi.setText(Vendredi);
+        editVendredi.setVisibility(View.VISIBLE);
+        viewVendredi.setVisibility(View.GONE);
+
     }
 
-    //METHODE POUR ACCEPTER LE CHANGEMENT DINFORMATION DE LA CLINIQUE
+    //METHODE POUR ACCEPTER LE CHANGEMENT
     public void accept(View view) {
 
-        Button cancel = findViewById(R.id.btnCancel);
-        Button accept = findViewById(R.id.btnAccept);
-        Button change = findViewById(R.id.btnChange);
-        EditText editAdresse = findViewById(R.id.editAdresse);
-        TextView viewAdresse = findViewById(R.id.viewAdresse);
-        EditText editTel = findViewById(R.id.editTel);
-        TextView viewTel = findViewById(R.id.viewTel);
-        EditText editNom = findViewById(R.id.editNom);
-        TextView viewNom = findViewById(R.id.viewNom);
-        EditText editAssurance = findViewById(R.id.editAssurance);
-        TextView viewAssurance = findViewById(R.id.viewAssurance);
-        EditText editPaiment = findViewById(R.id.editPaiment);
-        TextView viewPaiment = findViewById(R.id.viewPaiment);
+        cancel.setVisibility(View.GONE);
+        accept.setVisibility(View.GONE);
+        change.setVisibility(View.VISIBLE);
+
+        String Lundi = editLundi.getText().toString();
+        viewLundi.setText(Lundi);
+        editLundi.setVisibility(View.GONE);
+        viewLundi.setVisibility(View.VISIBLE);
+
+        String Mardi = editMardi.getText().toString();
+        viewMardi.setText(Mardi);
+        editMardi.setVisibility(View.GONE);
+        viewMardi.setVisibility(View.VISIBLE);
+
+        String Mercredi = editMercredi.getText().toString();
+        viewMercredi.setText(Mercredi);
+        editMercredi.setVisibility(View.GONE);
+        viewMercredi.setVisibility(View.VISIBLE);
+
+        String Jeudi = editJeudi.getText().toString();
+        viewJeudi.setText(Jeudi);
+        editJeudi.setVisibility(View.GONE);
+        viewJeudi.setVisibility(View.VISIBLE);
+
+        String Vendredi = editVendredi.getText().toString();
+        viewVendredi.setText(Vendredi);
+        editVendredi.setVisibility(View.GONE);
+        viewVendredi.setVisibility(View.VISIBLE);
 
 
-
-            cancel.setVisibility(View.GONE);
-            accept.setVisibility(View.GONE);
-            change.setVisibility(View.VISIBLE);
-
-            String adresse = editAdresse.getText().toString();
-            viewAdresse.setText(adresse);
-            editAdresse.setVisibility(View.GONE);
-            viewAdresse.setVisibility(View.VISIBLE);
-
-            String tel = editTel.getText().toString();
-            viewTel.setText(tel);
-            editTel.setVisibility(View.GONE);
-            viewTel.setVisibility(View.VISIBLE);
-
-            String nom = editNom.getText().toString();
-            viewNom.setText(nom);
-            editNom.setVisibility(View.GONE);
-            viewNom.setVisibility(View.VISIBLE);
-
-            String assurance = editAssurance.getText().toString();
-            viewAssurance.setText(assurance);
-            editAssurance.setVisibility(View.GONE);
-            viewAssurance.setVisibility(View.VISIBLE);
-
-            String paiment = editPaiment.getText().toString();
-            viewPaiment.setText(paiment);
-            editPaiment.setVisibility(View.GONE);
-            viewPaiment.setVisibility(View.VISIBLE);
-
-
+        //UPDATE FIREBASE
+        ShiftsObject mesHeures = new ShiftsObject(Lundi, Mardi, Mercredi, Jeudi, Vendredi);
+        dataEmploye.child(id).child("mesHeures").setValue(mesHeures);
 
     }
 
     //METHOD TO GO BACK
     public void cancel(View view) {
-        Button cancel = findViewById(R.id.btnCancel);
-        Button accept = findViewById(R.id.btnAccept);
-        Button change = findViewById(R.id.btnChange);
-        EditText editAdresse = findViewById(R.id.editAdresse);
-        TextView viewAdresse = findViewById(R.id.viewAdresse);
-        EditText editTel = findViewById(R.id.editTel);
-        TextView viewTel = findViewById(R.id.viewTel);
-        EditText editNom = findViewById(R.id.editNom);
-        TextView viewNom = findViewById(R.id.viewNom);
-        EditText editAssurance = findViewById(R.id.editAssurance);
-        TextView viewAssurance = findViewById(R.id.viewAssurance);
-        EditText editPaiment = findViewById(R.id.editPaiment);
-        TextView viewPaiment = findViewById(R.id.viewPaiment);
+
         cancel.setVisibility(View.GONE);
         accept.setVisibility(View.GONE);
         change.setVisibility(View.VISIBLE);
-        editAdresse.setVisibility(View.GONE);
-        viewAdresse.setVisibility(View.VISIBLE);
-        editTel.setVisibility(View.GONE);
-        viewTel.setVisibility(View.VISIBLE);
-        editNom.setVisibility(View.GONE);
-        viewNom.setVisibility(View.VISIBLE);
-        editAssurance.setVisibility(View.GONE);
-        viewAssurance.setVisibility(View.VISIBLE);
-        editPaiment.setVisibility(View.GONE);
-        viewPaiment.setVisibility(View.VISIBLE);
+        editLundi.setVisibility(View.GONE);
+        viewLundi.setVisibility(View.VISIBLE);
+        editMardi.setVisibility(View.GONE);
+        viewMardi.setVisibility(View.VISIBLE);
+        editMercredi.setVisibility(View.GONE);
+        viewMercredi.setVisibility(View.VISIBLE);
+        editJeudi.setVisibility(View.GONE);
+        viewJeudi.setVisibility(View.VISIBLE);
+        editVendredi.setVisibility(View.GONE);
+        viewVendredi.setVisibility(View.VISIBLE);
 
     }
 }

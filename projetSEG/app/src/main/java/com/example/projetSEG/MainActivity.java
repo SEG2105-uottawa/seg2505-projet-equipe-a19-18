@@ -66,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 patientList.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Object infoRaw = postSnapshot.getValue();
-                    HashMap info = (HashMap) infoRaw;
+                    HashMap info = (HashMap) postSnapshot.getValue();
 
                     password = (String) info.get("password");
                     //ERRorRRr
@@ -76,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
                     nom = (String) info.get("nom");
                     prenom = (String) info.get("prenom");
                     courriel = (String) info.get("courriel");
-
-
 
 
                     User user = new User(username, password, nom, prenom, courriel);
@@ -95,8 +92,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 employeList.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Object infoRaw = postSnapshot.getValue();
-                    HashMap info = (HashMap) infoRaw;
+                    HashMap info = (HashMap) postSnapshot.getValue();
 
                     password = (String) info.get("password");
                     username = (String) info.get("username");

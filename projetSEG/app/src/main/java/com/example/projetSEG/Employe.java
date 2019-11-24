@@ -18,24 +18,37 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+
 
 
 //PAGE POUR UN EMPLOYE
 public class Employe extends AppCompatActivity {
 
-    DatabaseReference dataEmploye;
-    HashMap<String,String> list;
-
     //USER NAME CONNECTED
     String nameOfUser;
 
-    //USER INFO
-    String key, username;
-
+    DatabaseReference dataEmploye;
+    String key;
     String id;
+    boolean hasClinicInfo = false;
+
+    TextView viewAdresse;
+    TextView viewTel;
+    TextView viewNom;
+    TextView viewAssurance;
+    TextView viewPaiment;
+
+    EditText editAdresse;
+    EditText editTel;
+    EditText editNom;
+    EditText editAssurance;
+    EditText editPaiment;
+
+    Button cancel;
+    Button accept;
+    Button change;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +61,21 @@ public class Employe extends AppCompatActivity {
         title.setText("Bienvenue " +nameOfUser+ "! Vous êtes connecté en tant qu'employé");
 
         dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
-        list = new HashMap<>();
+
+        editAdresse = findViewById(R.id.editAdresse);
+        viewAdresse = findViewById(R.id.viewAdresse);
+        editTel = findViewById(R.id.editTel);
+        viewTel = findViewById(R.id.viewTel);
+        editNom = findViewById(R.id.editNom);
+        viewNom = findViewById(R.id.viewNom);
+        editAssurance = findViewById(R.id.editAssurance);
+        viewAssurance = findViewById(R.id.viewAssurance);
+        editPaiment = findViewById(R.id.editPaiment);
+        viewPaiment = findViewById(R.id.viewPaiment);
+
+        cancel = findViewById(R.id.btnCancel);
+        accept = findViewById(R.id.btnAccept);
+        change = findViewById(R.id.btnChange);
 
     }
 
@@ -59,31 +86,29 @@ public class Employe extends AppCompatActivity {
         dataEmploye.addValueEventListener((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list.clear();
+
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //GET INFO DATABASE
-                    Object infoRaw = postSnapshot.getValue();
+
+                    HashMap info = (HashMap) postSnapshot.getValue();
                     key = postSnapshot.getKey();
-                    HashMap info = (HashMap) infoRaw;
-                    username = (String) info.get("username");
-                    list.put(key,username);
+                    String username = (String) info.get("username");
 
                     //SET VIEW INFORMATION
                     HashMap clinic = (HashMap) info.get("clinique");
-                    TextView viewAdresse = findViewById(R.id.viewAdresse);
-                    TextView viewTel = findViewById(R.id.viewTel);
-                    TextView viewNom = findViewById(R.id.viewNom);
-                    TextView viewAssurance = findViewById(R.id.viewAssurance);
-                    TextView viewPaiment = findViewById(R.id.viewPaiment);
-                    if (nameOfUser.equals(username) && clinic != null) {
-                        viewAdresse.setText(clinic.get("adresse").toString());
-                        viewTel.setText(clinic.get("telephone").toString());
-                        viewNom.setText(clinic.get("nom").toString());
-                        viewAssurance.setText(clinic.get("assurance").toString());
-                        viewPaiment.setText(clinic.get("paiment").toString());
-                        id = key;
-                    }
 
+                    if (nameOfUser.equals(username)) {
+                        id = key;
+                        if (clinic != null) {
+                            viewAdresse.setText(clinic.get("adresse").toString());
+                            viewTel.setText(clinic.get("telephone").toString());
+                            viewNom.setText(clinic.get("nom").toString());
+                            viewAssurance.setText(clinic.get("assurance").toString());
+                            viewPaiment.setText(clinic.get("paiment").toString());
+                            hasClinicInfo = true;
+                        }
+
+                    }
                 }
             }
 
@@ -97,20 +122,6 @@ public class Employe extends AppCompatActivity {
 
     //METHODE POUR APPLIQUER LA POSSIBILITE DE MODIFIER LES INFORMATIONS DE LA CLINIQUE
     public void change(View view) {
-        Button cancel = findViewById(R.id.btnCancel);
-        Button accept = findViewById(R.id.btnAccept);
-        Button change = findViewById(R.id.btnChange);
-        EditText editAdresse = findViewById(R.id.editAdresse);
-        TextView viewAdresse = findViewById(R.id.viewAdresse);
-        EditText editTel = findViewById(R.id.editTel);
-        TextView viewTel = findViewById(R.id.viewTel);
-        EditText editNom = findViewById(R.id.editNom);
-        TextView viewNom = findViewById(R.id.viewNom);
-        EditText editAssurance = findViewById(R.id.editAssurance);
-        TextView viewAssurance = findViewById(R.id.viewAssurance);
-        EditText editPaiment = findViewById(R.id.editPaiment);
-        TextView viewPaiment = findViewById(R.id.viewPaiment);
-
 
         cancel.setVisibility(View.VISIBLE);
         accept.setVisibility(View.VISIBLE);
@@ -144,20 +155,6 @@ public class Employe extends AppCompatActivity {
 
     //METHODE POUR ACCEPTER LE CHANGEMENT DINFORMATION DE LA CLINIQUE
     public void accept(View view) {
-
-        Button cancel = findViewById(R.id.btnCancel);
-        Button accept = findViewById(R.id.btnAccept);
-        Button change = findViewById(R.id.btnChange);
-        EditText editAdresse = findViewById(R.id.editAdresse);
-        TextView viewAdresse = findViewById(R.id.viewAdresse);
-        EditText editTel = findViewById(R.id.editTel);
-        TextView viewTel = findViewById(R.id.viewTel);
-        EditText editNom = findViewById(R.id.editNom);
-        TextView viewNom = findViewById(R.id.viewNom);
-        EditText editAssurance = findViewById(R.id.editAssurance);
-        TextView viewAssurance = findViewById(R.id.viewAssurance);
-        EditText editPaiment = findViewById(R.id.editPaiment);
-        TextView viewPaiment = findViewById(R.id.viewPaiment);
 
         //PHONE is a number
         Boolean isNumber;
@@ -210,34 +207,16 @@ public class Employe extends AppCompatActivity {
             viewPaiment.setVisibility(View.VISIBLE);
 
             //UPDATE FIREBASE
-            Set set = list.entrySet();
-            Iterator iterator = set.iterator();
-            while(iterator.hasNext()) {
-                Map.Entry entry = (Map.Entry)iterator.next();
-                if (nameOfUser.equals(entry.getValue().toString())) {
-                    Clinic clinic = new Clinic(adresse, tel, nom, assurance, paiment);
-                    dataEmploye.child(entry.getKey().toString()).child("clinique").setValue(clinic);
 
-                }
-            }
+            Clinic clinic = new Clinic(adresse, tel, nom, assurance, paiment);
+            dataEmploye.child(id).child("clinique").setValue(clinic);
+
         }
     }
 
     //METHOD TO GO BACK
     public void cancel(View view) {
-        Button cancel = findViewById(R.id.btnCancel);
-        Button accept = findViewById(R.id.btnAccept);
-        Button change = findViewById(R.id.btnChange);
-        EditText editAdresse = findViewById(R.id.editAdresse);
-        TextView viewAdresse = findViewById(R.id.viewAdresse);
-        EditText editTel = findViewById(R.id.editTel);
-        TextView viewTel = findViewById(R.id.viewTel);
-        EditText editNom = findViewById(R.id.editNom);
-        TextView viewNom = findViewById(R.id.viewNom);
-        EditText editAssurance = findViewById(R.id.editAssurance);
-        TextView viewAssurance = findViewById(R.id.viewAssurance);
-        EditText editPaiment = findViewById(R.id.editPaiment);
-        TextView viewPaiment = findViewById(R.id.viewPaiment);
+
         cancel.setVisibility(View.GONE);
         accept.setVisibility(View.GONE);
         change.setVisibility(View.VISIBLE);
@@ -256,7 +235,7 @@ public class Employe extends AppCompatActivity {
 
     public void service(View view) {
 
-        if (id == null) {
+        if (!hasClinicInfo) {
             Toast.makeText(getApplicationContext(), "Entrez les informations des la clinique AVANT", Toast.LENGTH_LONG).show();
         } else {
             Intent intent = new Intent(Employe.this, ClinicService.class);
@@ -266,7 +245,7 @@ public class Employe extends AppCompatActivity {
 
     }
     public void heure(View view) {
-        if (id == null) {
+        if (!hasClinicInfo) {
             Toast.makeText(getApplicationContext(), "Entrez les informations des la clinique AVANT", Toast.LENGTH_LONG).show();
         } else {
             Intent intent = new Intent(Employe.this, ClinicHour.class);
@@ -275,7 +254,7 @@ public class Employe extends AppCompatActivity {
         }
     }
     public void shifts(View view) {
-        if (id == null) {
+        if (!hasClinicInfo) {
             Toast.makeText(getApplicationContext(), "Entrez les informations des la clinique AVANT", Toast.LENGTH_LONG).show();
         } else {
             Intent intent = new Intent(Employe.this, Shifts.class);

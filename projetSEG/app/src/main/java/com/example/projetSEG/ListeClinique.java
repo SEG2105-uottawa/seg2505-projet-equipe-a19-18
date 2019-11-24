@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +32,7 @@ public class ListeClinique extends AppCompatActivity {
     int selectedItem = -1;
     ArrayList<Clinic> clinicList = new ArrayList<>();
     ArrayList<String> keyList = new ArrayList<>();
+    String clinicName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +94,15 @@ public class ListeClinique extends AppCompatActivity {
     }
 
     public void rate(View view) {
+        if (selectedItem == -1) {
+            Toast.makeText(getApplicationContext(), "Choisir une clinique", Toast.LENGTH_LONG).show();
+        } else {
+            clinicName = keyList.get(selectedItem);
 
+
+            Intent intent = new Intent(ListeClinique.this, RateClinic.class);
+            intent.putExtra("clinique", clinicName);
+            startActivity(intent);
+        }
     }
 }

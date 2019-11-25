@@ -3,7 +3,7 @@ SEG 2505 - Apk projet
 ******** ATTENTION *********
 CECI EST JUSTE UNE DESCRITPION DU PROJET!
 
-********* VOIR README.txt POUR LE LIVRABLE 1 *********
+********* VOIR README.txt POUR LE LIVRABLE *********
 
 *Team Members:
 

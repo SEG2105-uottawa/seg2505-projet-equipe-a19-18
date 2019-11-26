@@ -83,7 +83,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="*Entrer votre mot de pase"
+                android:hint="*Entrer votre mot de passe"
                 android:inputType="textPassword"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp" />
@@ -97,6 +97,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textSize="17.5dp"
                 android:hint="*Confirmez votre mot de passe"
                 android:inputType="textPassword"
                 android:paddingLeft="15dp"

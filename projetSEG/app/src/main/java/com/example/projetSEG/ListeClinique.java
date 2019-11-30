@@ -22,7 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class ListeClinique extends AppCompatActivity {
 
@@ -35,7 +34,6 @@ public class ListeClinique extends AppCompatActivity {
     int selectedItem = -1;
 
     ArrayList<String> keyList = new ArrayList<>();
-    String clinicName;
 
     String rAdresse, rHeure, rService;
     TextView recherche, attente;
@@ -186,19 +184,17 @@ public class ListeClinique extends AppCompatActivity {
 
         }
 
-
-
     }
 
     public void rate(View view) {
         if (selectedItem == -1) {
             Toast.makeText(getApplicationContext(), "Choisir une clinique", Toast.LENGTH_LONG).show();
         } else {
-            clinicName = keyList.get(selectedItem);
+            String id = keyList.get(selectedItem);
 
 
             Intent intent = new Intent(ListeClinique.this, RateClinic.class);
-            intent.putExtra("clinique", clinicName);
+            intent.putExtra("employe", id);
             startActivity(intent);
         }
     }

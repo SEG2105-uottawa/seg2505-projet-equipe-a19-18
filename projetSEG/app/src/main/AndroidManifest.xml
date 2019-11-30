@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RateClinicActivity"></activity>
+        <activity android:name=".RateClinic"></activity>
         <activity android:name=".ListeClinique" />
         <activity android:name=".Shifts" />
         <activity android:name=".ClinicHour" />

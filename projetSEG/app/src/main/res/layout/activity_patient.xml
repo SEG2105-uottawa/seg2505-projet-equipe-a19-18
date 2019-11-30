@@ -50,6 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="Vous pouvez aussi rechercher par un critère"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp" />
@@ -59,7 +61,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingLeft="15dp"
-            android:paddingTop="30dp"
+            android:paddingTop="15dp"
             android:paddingRight="15dp">
 
             <TextView

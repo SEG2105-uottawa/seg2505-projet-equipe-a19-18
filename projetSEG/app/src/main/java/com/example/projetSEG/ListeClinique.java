@@ -30,7 +30,7 @@ public class ListeClinique extends AppCompatActivity {
     ArrayAdapter<String> adapter;
 
     int selectedItem = -1;
-    ArrayList<Clinic> clinicList = new ArrayList<>();
+
     ArrayList<String> keyList = new ArrayList<>();
     String clinicName;
 

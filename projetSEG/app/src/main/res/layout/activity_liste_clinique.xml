@@ -38,6 +38,15 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/recherche"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
+
         <ListView
             android:id="@+id/listClinic"
             android:layout_width="match_parent"

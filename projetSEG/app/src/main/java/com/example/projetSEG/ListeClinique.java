@@ -20,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class ListeClinique extends AppCompatActivity {
 
@@ -34,10 +36,19 @@ public class ListeClinique extends AppCompatActivity {
     ArrayList<String> keyList = new ArrayList<>();
     String clinicName;
 
+    String rAdresse, rHeure, rService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_clinique);
+
+
+        Intent intent = getIntent();
+        rAdresse = intent.getStringExtra("adresse");
+        rHeure = intent.getStringExtra("heure");
+        rService = intent.getStringExtra("service");
+
 
         dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
 
@@ -61,10 +72,59 @@ public class ListeClinique extends AppCompatActivity {
                 if (clinic != null) { //evite un probleme si lemploye na pas defini de clinic
                     String clinicName = (String) clinic.get("nom");
 
+                    String clinicAdress = (String) clinic.get("adresse");
+                    HashMap clinicHour = (HashMap) clinic.get("clinicHour");
+                    HashMap<String, HashMap> idService = (HashMap) clinic.get("service");
+                    ArrayList services = new ArrayList();
+
+                    for(Map.Entry<String, HashMap> entry : idService.entrySet()) {
+                        String k = entry.getKey();
+                        HashMap v = entry.getValue();
+                        services.add(v.get("id"));
+                    }
+
+
                     String value = clinicName;
 
-                    keyList.add(dataSnapshot.getKey());
-                    array.add(value);
+                    //rechercher par adresse
+                    if (rAdresse!=null) {
+                        if (rAdresse.equals(clinicAdress)) {
+                            keyList.add(dataSnapshot.getKey());
+                            array.add(value);
+                        }
+
+                    //recherche par heure
+                    } else if (rHeure!=null) {
+
+
+                        if (true) {
+                            keyList.add(dataSnapshot.getKey());
+                            array.add(value);
+                        }
+
+                    //recherche par service
+                    } else if (rService!=null) {
+
+                        for (int i = 0; i < services.size(); i++) {
+
+                            if (rService.equals(services.get(i))) {
+                                keyList.add(dataSnapshot.getKey());
+                                array.add(value);
+                                break;
+                            }
+                        }
+
+
+
+
+
+
+
+                    //recherche avec aucun critere
+                    } else {
+                        keyList.add(dataSnapshot.getKey());
+                        array.add(value);
+                    }
 
                 }
 

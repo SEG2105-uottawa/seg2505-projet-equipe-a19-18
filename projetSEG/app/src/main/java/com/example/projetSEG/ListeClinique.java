@@ -38,7 +38,9 @@ public class ListeClinique extends AppCompatActivity {
     String clinicName;
 
     String rAdresse, rHeure, rService;
-    TextView recherche;
+    TextView recherche, attente;
+
+    Integer[] numberPatient = new Integer[1000];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class ListeClinique extends AppCompatActivity {
         setContentView(R.layout.activity_liste_clinique);
 
         recherche  = findViewById(R.id.recherche);
+        attente = findViewById(R.id.attente);
+
         Intent intent = getIntent();
         rAdresse = intent.getStringExtra("adresse");
         rHeure = intent.getStringExtra("heure");
@@ -61,10 +65,12 @@ public class ListeClinique extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedItem = position;
+                attente.setText("Temps d'attente estimé : "+numberPatient[position]*15+" min.");
             }
         });
 
         dataEmploye.addChildEventListener(new ChildEventListener() {
+            Integer n = 0;
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
@@ -92,10 +98,7 @@ public class ListeClinique extends AppCompatActivity {
                         }
                     }
 
-
-
                     String value = clinicName;
-
                     //rechercher par adresse
                     if (rAdresse!=null) {
                         recherche.setText("Recherche par adresse");
@@ -106,47 +109,32 @@ public class ListeClinique extends AppCompatActivity {
                         if (array.isEmpty()) {
                             recherche.setText("Recherche par adresse : AUCUN RÉSULTAT TROUVÉ");
                         }
-
                     //recherche par heure
                     } else if (rHeure!=null) {
                         recherche.setText("Recherche par heure");
-
                         for (int i = 0; i < heures.size(); i++) {
-
                             if (rHeure.equals(heures.get(i))) {
                                 keyList.add(dataSnapshot.getKey());
                                 array.add(value);
                                 break;
                             }
                         }
-
                         if (array.isEmpty()) {
                             recherche.setText("Recherche par heure : AUCUN RÉSULTAT TROUVÉ");
                         }
-
                     //recherche par service
                     } else if (rService!=null) {
                         recherche.setText("Recherche par service");
-
                         for (int i = 0; i < services.size(); i++) {
-
                             if (rService.equals(services.get(i))) {
                                 keyList.add(dataSnapshot.getKey());
                                 array.add(value);
                                 break;
                             }
                         }
-
                         if (array.isEmpty()) {
                             recherche.setText("Recherche par service : AUCUN RÉSULTAT TROUVÉ");
                         }
-
-
-
-
-
-
-
                     //recherche avec aucun critere
                     } else {
                         keyList.add(dataSnapshot.getKey());
@@ -154,12 +142,20 @@ public class ListeClinique extends AppCompatActivity {
                     }
 
                 }
+                if (clinic.get("patients") != null) {
+                    Integer number = (int) (long) clinic.get("patients");
+                    numberPatient[n] = number;
+                } else {
+                    numberPatient[n] = 0;
+                }
+                n++;
 
                 adapter.notifyDataSetChanged();
 
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 adapter.notifyDataSetChanged();
             }
             @Override
@@ -177,6 +173,20 @@ public class ListeClinique extends AppCompatActivity {
     }
 
     public void book(View view) {
+
+        if (selectedItem == -1) {
+            Toast.makeText(getApplicationContext(), "Choisir une clinique", Toast.LENGTH_LONG).show();
+        } else {
+            String id = keyList.get(selectedItem);
+            Integer number = numberPatient[selectedItem];
+            number++;
+            dataEmploye.child(id).child("clinique").child("patients").setValue(number);
+
+            Toast.makeText(getApplicationContext(), "Enregitré", Toast.LENGTH_LONG).show();
+
+        }
+
+
 
     }
 

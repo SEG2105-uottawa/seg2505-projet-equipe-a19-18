@@ -1,3 +1,6 @@
+https://docs.google.com/document/d/1zfC0yZrwS9IcTMpOS1M16bkBnJKF98Hfv7iGoqzS0kA/edit?usp=sharing
+
+
 SEG 2505 - Apk projet
 
 ******** ATTENTION *********

@@ -192,7 +192,6 @@ public class ListeClinique extends AppCompatActivity {
         } else {
             String id = keyList.get(selectedItem);
 
-
             Intent intent = new Intent(ListeClinique.this, RateClinic.class);
             intent.putExtra("employe", id);
             startActivity(intent);

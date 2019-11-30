@@ -38,7 +38,7 @@
         </LinearLayout>
 
         <RatingBar
-            android:id="@+id/ratingBar2"
+            android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
@@ -54,7 +54,7 @@
             android:text="Commentaire sur la clinique(optionnel)" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/txtComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -63,6 +63,27 @@
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingRight="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button57"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="casual"
+                android:onClick="soumettre"
+                android:text="Soumettre"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

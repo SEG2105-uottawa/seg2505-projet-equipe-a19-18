@@ -25,9 +25,7 @@ https://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=191012276330&fbclid=I
 ---
 ************************************  
 Statut de construction
-[![Construire
-État]
+[![ConstruireÉtat]
 (https://circleci.com/gh/SEG2105F18/ProductCatalog.png?branch=master)]
-(https: // circle
-ci.com/gh/SEG2105F18/ProductCatalog)
+(https: // circleci.com/gh/SEG2105-uottawa/seg2505-projet-equipe-a19-18/projetSEG)
 ************************************ 

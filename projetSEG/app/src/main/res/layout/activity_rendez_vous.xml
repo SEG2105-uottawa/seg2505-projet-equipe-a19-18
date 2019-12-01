@@ -42,13 +42,45 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="45dp"
             android:layout_marginRight="45dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:background="@color/colorPrimary"
             android:fontFamily="casual"
             android:onClick="walkin"
-            android:text="Réserver un Walk-In"
+            android:text="Réserver un Walk-In immédiatement"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CalendarView
+                android:id="@+id/calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btntxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="casual"
+                android:text="Réserver un rendez-vous a une date fixe"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
 
 
     </LinearLayout>

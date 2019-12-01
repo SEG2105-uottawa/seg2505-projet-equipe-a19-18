@@ -61,18 +61,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
-            android:paddingTop="20dp"
+            android:paddingTop="10dp"
             android:paddingRight="15dp"
-            android:text="Temps d'attente estimé : "
+            android:text="Temps d'attente estimé pour un Walk-In : "
             android:textColor="@color/colorAccent"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/button540"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="45dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="45dp"
             android:layout_marginBottom="10dp"
             android:background="@color/colorPrimary"

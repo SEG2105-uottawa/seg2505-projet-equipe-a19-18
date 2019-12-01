@@ -32,13 +32,14 @@ public class ListeClinique extends AppCompatActivity {
     ArrayAdapter<String> adapter;
 
     int selectedItem = -1;
+    String idKey;
 
     ArrayList<String> keyList = new ArrayList<>();
 
     String rAdresse, rHeure, rService;
     TextView recherche, attente;
 
-    Integer[] numberPatient = new Integer[1000];
+    HashMap<String, Integer> numberPatient = new HashMap<>();  // <id, patients>
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +64,12 @@ public class ListeClinique extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedItem = position;
-                attente.setText("Temps d'attente estimé : "+numberPatient[position]*15+" min.");
+                idKey = keyList.get(selectedItem);
+                attente.setText("Temps d'attente estimé pour un Walk-In : "+numberPatient.get(idKey)*15+" min.");
             }
         });
 
         dataEmploye.addChildEventListener(new ChildEventListener() {
-            Integer n = 0;
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
@@ -142,11 +143,10 @@ public class ListeClinique extends AppCompatActivity {
 
                     if (clinic.get("patients") != null) {
                         Integer number = (int) (long) clinic.get("patients");
-                        numberPatient[n] = number;
+                        numberPatient.put(dataSnapshot.getKey(), number);
                     } else {
-                        numberPatient[n] = 0;
+                        numberPatient.put(dataSnapshot.getKey(), 0);
                     }
-                    n++;
                 }
 
 
@@ -155,6 +155,19 @@ public class ListeClinique extends AppCompatActivity {
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                HashMap info = (HashMap) dataSnapshot.getValue();
+                HashMap clinic = (HashMap) info.get("clinique");
+
+                if (clinic != null) {
+                    numberPatient.remove(dataSnapshot.getKey());
+                    if (clinic.get("patients") != null) {
+                        Integer number = (int) (long) clinic.get("patients");
+                        numberPatient.put(dataSnapshot.getKey(), number);
+                    } else {
+                        numberPatient.put(dataSnapshot.getKey(), 0);
+                    }
+                }
 
                 adapter.notifyDataSetChanged();
             }

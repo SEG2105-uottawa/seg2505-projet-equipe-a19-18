@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Date;
 import java.util.HashMap;
 
 public class RendezVous extends AppCompatActivity {
@@ -23,6 +27,10 @@ public class RendezVous extends AppCompatActivity {
     Integer numberPatient;
     int clic = 0;
 
+    Button txt;
+    CalendarView calendar;
+    long date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +39,22 @@ public class RendezVous extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("employe");
 
-        dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
+        txt = findViewById(R.id.btntxt);
+        calendar = findViewById(R.id.calendar);
+        calendar.setMinDate(System.currentTimeMillis());
+        date = System.currentTimeMillis();
 
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                int mois = month+1;
+                txt.setText("Réserver un rendez-vous le\n"+dayOfMonth+" / "+mois);
+
+            }
+        });
+
+
+
+        dataEmploye = FirebaseDatabase.getInstance().getReference("Employe");
 
         dataEmploye.addValueEventListener((new ValueEventListener() {
             @Override
@@ -65,9 +87,9 @@ public class RendezVous extends AppCompatActivity {
         if (clic == 0) {
             numberPatient++;
             dataEmploye.child(id).child("clinique").child("patients").setValue(numberPatient);
-            Toast.makeText(getApplicationContext(), "Enregitré", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Enregitré : Walk-In", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(), "Déjà enregitré", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Walk-In déjà enregitré", Toast.LENGTH_LONG).show();
         }
 
         clic++;

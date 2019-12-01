@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -27,9 +28,11 @@ public class RendezVous extends AppCompatActivity {
     Integer numberPatient;
     int clic = 0;
 
+    final long yearInMilli = DateUtils.YEAR_IN_MILLIS;
+    final long dayInMilli = DateUtils.DAY_IN_MILLIS;
     Button txt;
     CalendarView calendar;
-    long date;
+    long todayDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +42,13 @@ public class RendezVous extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("employe");
 
+
         txt = findViewById(R.id.btntxt);
         calendar = findViewById(R.id.calendar);
-        calendar.setMinDate(System.currentTimeMillis());
-        date = System.currentTimeMillis();
+        todayDate = System.currentTimeMillis();
+        calendar.setMinDate(todayDate+dayInMilli);
+        calendar.setMaxDate(todayDate+yearInMilli);
+
 
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {

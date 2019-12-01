@@ -105,7 +105,9 @@ public class InfoClinic extends AppCompatActivity {
                                 rating +=  ((Number)v.get("star")).floatValue();
                                 nEval++;
                             }
-                            eval.setText("Services          Évaluation : "+rating/nEval);
+                            float result = rating/nEval;
+                            String r = String.format("%.02f", result);
+                            eval.setText("Services          Évaluation : "+r);
                         } else {
                             eval.setText("Services          Évaluation : Non évalué");
                         }

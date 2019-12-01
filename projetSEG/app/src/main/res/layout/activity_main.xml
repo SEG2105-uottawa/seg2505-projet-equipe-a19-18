@@ -65,12 +65,15 @@
             android:theme="@style/AppTheme" />
 
 
+        <!--style="@android:style/Widget.Button.Toggle"-->
+
+
         <Button
             android:id="@+id/btnLogin"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="227dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center"
             android:background="@color/colorPrimary"
             android:fontFamily="casual"
             android:onClick="login"
@@ -78,9 +81,6 @@
             android:text="Connexion"
             android:textSize="25dp"
             android:textStyle="bold" />
-
-        <!--style="@android:style/Widget.Button.Toggle"-->
-
 
         <Button
             android:id="@+id/btnRegister"

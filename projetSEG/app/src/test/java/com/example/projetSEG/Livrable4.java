@@ -12,6 +12,6 @@ public class Livrable4 {
     @Test
     public void test1() {
         int i = 0;
-        assertEquals("Conversion from celsius to fahrenheit failed", 0, i, 0.001);
+        assertEquals("test1", 0, i, 0.001);
     }
 }

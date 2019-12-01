@@ -51,7 +51,7 @@
             android:paddingLeft="15dp"
             android:paddingTop="30dp"
             android:paddingRight="15dp"
-            android:text="Commentaire sur la clinique(optionnel)" />
+            android:text="Commentaire sur la clinique (optionnel)" />
 
         <EditText
             android:id="@+id/txtComment"

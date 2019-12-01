@@ -139,14 +139,16 @@ public class ListeClinique extends AppCompatActivity {
                         array.add(value);
                     }
 
+
+                    if (clinic.get("patients") != null) {
+                        Integer number = (int) (long) clinic.get("patients");
+                        numberPatient[n] = number;
+                    } else {
+                        numberPatient[n] = 0;
+                    }
+                    n++;
                 }
-                if (clinic.get("patients") != null) {
-                    Integer number = (int) (long) clinic.get("patients");
-                    numberPatient[n] = number;
-                } else {
-                    numberPatient[n] = 0;
-                }
-                n++;
+
 
                 adapter.notifyDataSetChanged();
 
@@ -176,11 +178,10 @@ public class ListeClinique extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Choisir une clinique", Toast.LENGTH_LONG).show();
         } else {
             String id = keyList.get(selectedItem);
-            Integer number = numberPatient[selectedItem];
-            number++;
-            dataEmploye.child(id).child("clinique").child("patients").setValue(number);
 
-            Toast.makeText(getApplicationContext(), "Enregitré", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ListeClinique.this, RendezVous.class);
+            intent.putExtra("employe", id);
+            startActivity(intent);
 
         }
 

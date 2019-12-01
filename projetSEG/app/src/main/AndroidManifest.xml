@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InfoClinic"></activity>
+        <activity android:name=".RendezVous"></activity>
+        <activity android:name=".InfoClinic" />
         <activity android:name=".RateClinic" />
         <activity android:name=".ListeClinique" />
         <activity android:name=".Shifts" />

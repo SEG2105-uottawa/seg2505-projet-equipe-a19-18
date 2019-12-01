@@ -197,4 +197,16 @@ public class ListeClinique extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    public void info(View view) {
+        if (selectedItem == -1) {
+            Toast.makeText(getApplicationContext(), "Choisir une clinique", Toast.LENGTH_LONG).show();
+        } else {
+            String id = keyList.get(selectedItem);
+
+            Intent intent = new Intent(ListeClinique.this, InfoClinic.class);
+            intent.putExtra("employe", id);
+            startActivity(intent);
+        }
+    }
 }

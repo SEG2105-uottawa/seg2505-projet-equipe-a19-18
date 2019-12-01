@@ -18,8 +18,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 public class RendezVous extends AppCompatActivity {
 
@@ -30,9 +33,14 @@ public class RendezVous extends AppCompatActivity {
 
     final long yearInMilli = DateUtils.YEAR_IN_MILLIS;
     final long dayInMilli = DateUtils.DAY_IN_MILLIS;
-    Button txt;
+    Button btntxt;
+    TextView txt;
     CalendarView calendar;
     long todayDate;
+    int jour, mois;
+
+    ArrayList<String> arr = new ArrayList<>();
+    boolean valide = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +51,33 @@ public class RendezVous extends AppCompatActivity {
         id = intent.getStringExtra("employe");
 
 
-        txt = findViewById(R.id.btntxt);
+        btntxt = findViewById(R.id.btntxt);
+        txt = findViewById(R.id.txtInfo);
         calendar = findViewById(R.id.calendar);
         todayDate = System.currentTimeMillis();
-        calendar.setMinDate(todayDate+dayInMilli);
+        calendar.setMinDate(todayDate);
         calendar.setMaxDate(todayDate+yearInMilli);
 
 
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                int mois = month+1;
-                txt.setText("Réserver un rendez-vous le\n"+dayOfMonth+" / "+mois);
+                jour = dayOfMonth;
+                mois = month+1;
+                btntxt.setText("Réserver un rendez-vous le\n"+jour+" / "+mois);
+
+                valide = true;
+                for (int i = 0; i < arr.size(); i++) {
+                    String v = arr.get(i);
+                    String[] sep = v.split("-");
+                    if (sep[0].equals(Integer.toString(jour)) && sep[1].equals(Integer.toString(mois))) {
+                        valide = false;
+                    }
+                }
+                if (valide) {
+                    txt.setText("Valide");
+                } else {
+                    txt.setText("Non valide");
+                }
 
             }
         });
@@ -72,11 +96,19 @@ public class RendezVous extends AppCompatActivity {
 
                     if (clinic != null) {
                         if (id.equals(postSnapshot.getKey())) {
+
                             if (clinic.get("patients") != null) {
                                 Integer number = (int) (long) clinic.get("patients");
                                 numberPatient = number;
                             } else {
                                 numberPatient = 0;
+                            }
+
+                            HashMap<String, String> reserve = (HashMap) clinic.get("reserves");
+                            if (reserve != null) {
+                                for(Map.Entry<String, String> entry : reserve.entrySet()) {
+                                    arr.add(entry.getValue());
+                                }
                             }
                         }
                     }
@@ -99,5 +131,19 @@ public class RendezVous extends AppCompatActivity {
         }
 
         clic++;
+    }
+
+    public void reserve(View view) {
+
+        if (valide) {
+            String val = jour+"-"+mois;
+            dataEmploye.child(id).child("clinique").child("reserves").push().setValue(val);
+            Toast.makeText(getApplicationContext(), "Réservé", Toast.LENGTH_LONG).show();
+            valide = false;
+            txt.setText("Non valide");
+        } else {
+            Toast.makeText(getApplicationContext(), "NON VALIDE", Toast.LENGTH_LONG).show();
+        }
+
     }
 }

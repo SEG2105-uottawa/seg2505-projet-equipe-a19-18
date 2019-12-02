@@ -75,7 +75,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hint="Entrez une adresse exact"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
         </LinearLayout>
 
         <LinearLayout
@@ -96,7 +98,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hint="Entrez un horaire journalier exact"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
         </LinearLayout>
 
         <LinearLayout
@@ -117,7 +121,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hint="Entrez un service exact"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
         </LinearLayout>
 
     </LinearLayout>

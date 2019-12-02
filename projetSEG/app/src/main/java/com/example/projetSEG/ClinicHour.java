@@ -88,16 +88,17 @@ public class ClinicHour extends AppCompatActivity {
 
                     //SET VIEW INFORMATION
                     HashMap clinic = (HashMap) info.get("clinique");
-                    HashMap clinicHour = (HashMap) clinic.get("clinicHour");
-                    if (id.equals(key) && clinicHour != null) {
-                        viewLundi.setText(clinicHour.get("lundi").toString());
-                        viewMardi.setText(clinicHour.get("mardi").toString());
-                        viewMercredi.setText(clinicHour.get("mercredi").toString());
-                        viewJeudi.setText(clinicHour.get("jeudi").toString());
-                        viewVendredi.setText(clinicHour.get("vendredi").toString());
+                    if (clinic != null) {
+                        HashMap clinicHour = (HashMap) clinic.get("clinicHour");
+                        if (id.equals(key) && clinicHour != null) {
+                            viewLundi.setText(clinicHour.get("lundi").toString());
+                            viewMardi.setText(clinicHour.get("mardi").toString());
+                            viewMercredi.setText(clinicHour.get("mercredi").toString());
+                            viewJeudi.setText(clinicHour.get("jeudi").toString());
+                            viewVendredi.setText(clinicHour.get("vendredi").toString());
 
+                        }
                     }
-
                 }
             }
 

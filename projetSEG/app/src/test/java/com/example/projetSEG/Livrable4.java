@@ -16,9 +16,9 @@ import com.example.projetSEG.Livrable4;
 public class Livrable4 {
 
     @Test
-    public void testRatingObject() {
+    public void testRatingObjectRate() {
         Rating rating;
-        rating = new Rating(4.5f, "commantaire");
+        rating = new Rating(4.5f, "commentaire");
         float rate;
         rate = rating.star;
 
@@ -26,7 +26,12 @@ public class Livrable4 {
     }
 
     @Test
-    public void test() {
+    public void testRatingObjectComment() {
+        Rating rating;
+        rating = new Rating(4.5f, "commentaire");
+        String eval;
+        eval = rating.comment;
 
+        assertEquals("testRatingObject", "commentaire", eval);
     }
 }

@@ -3,10 +3,7 @@ https://docs.google.com/document/d/1zfC0yZrwS9IcTMpOS1M16bkBnJKF98Hfv7iGoqzS0kA/
 
 SEG 2505 - Apk projet
 
-******** ATTENTION *********
-CECI EST JUSTE UNE DESCRITPION DU PROJET!
-
-********* VOIR README.txt POUR LE LIVRABLE *********
+A Walk-In Clinics Service App - The application addresses the need for people to know waiting times at nearby walk-in clinics without having to leave their home. It also allows users to know the services offered by nearby walk-in clinics and allow them to check-in/book appointments at the clinic of their choice.
 
 *Team Members:
 
@@ -17,6 +14,7 @@ CECI EST JUSTE UNE DESCRITPION DU PROJET!
 - Simon Paquette    # 300044038
 
 - Hadi El-Saleh     # 300028268
+
 
 Web Link for the UML class diagram on the UMPLE Online page:
 

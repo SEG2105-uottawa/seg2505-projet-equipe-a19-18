@@ -13,7 +13,7 @@ A Walk-In Clinics Service App - The application addresses the need for people to
 
 - Simon Paquette    # 300044038
 
-- Hadi El-Saleh     # 300028268
+- Hady El-Saleh     # 300028268
 
 
 Web Link for the UML class diagram on the UMPLE Online page:
